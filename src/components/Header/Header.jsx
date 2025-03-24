@@ -1,5 +1,9 @@
 import "./Header.scss";
 
 export default function Header() {
-  return <div>Header</div>;
+  return (
+    <header className="header">
+      <h1 className="header__title">PlayPal</h1>
+    </header>
+  );
 }
