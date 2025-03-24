@@ -17,3 +17,15 @@ ul {
   list-style: none;
   padding: 0;
 }
+
+button {
+  cursor: pointer;
+}
+
+button,
+p {
+  font-size: 11px;
+  @include tablet-and-above {
+    font-size: 12px;
+  }
+}

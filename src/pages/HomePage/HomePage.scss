@@ -1,1 +1,44 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
+.homepage {
+  &__container {
+    background-color: $secondary-color;
+    width: 60vw;
+    height: 50vw;
+    min-height: 20.2806rem;
+    max-height: 23.125rem;
+    max-width: 28.1563rem;
+    margin: 5rem auto;
+    border: grey 10px solid;
+    border-radius: 10px;
+  }
+
+  &__title-wrapper {
+    background-color: grey;
+    width: 8rem;
+    height: 3rem;
+    text-align: center;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__btn {
+    height: 3rem;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 1rem;
+  }
+}
