@@ -1,13 +1,25 @@
 import "./SongSelectPage.scss";
+import SongSelect from "../../components/SongSelect/SongSelect";
 
 export default function SongSelectPage() {
   return (
     <main className="song-select">
       <section className="song-select__select-container">
-        <div className="song-select__header">
-          <h1>SONGS</h1>
+        <div className="song-select__header-wrapper">
+          <h1 className="song-select__header">SONGS</h1>
         </div>
-        <div className="song-select__songs-wrapper"></div>
+        <div className="song-select__songs-wrapper">
+          <SongSelect />
+          <SongSelect />
+          <SongSelect />
+          <SongSelect />
+          <SongSelect />
+          <SongSelect />
+          <SongSelect />
+          <SongSelect />
+          <SongSelect />
+          <SongSelect />
+        </div>
       </section>
       <section className="song-select__details-container">
         <div className="song-select__title"></div>

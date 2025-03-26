@@ -4,10 +4,15 @@
 .header {
   background-color: $secondary-color;
   padding: 0.5rem;
+
   &__title {
-    text-align: center;
-    font-size: 40px;
+    font-size: 1.75rem;
     margin: 0;
     color: white;
+
+    @include tablet-and-above {
+      text-align: center;
+      font-size: 40px;
+    }
   }
 }

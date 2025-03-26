@@ -1,0 +1,37 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.song {
+  &__container {
+    display: flex;
+    border: 1px solid $tertiary-color;
+    border-radius: 10px;
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  &__wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &--left {
+      width: 80%;
+    }
+  }
+
+  &__info {
+    border: 1px solid $tertiary-color;
+    border-radius: 7px;
+    margin: 0.25rem;
+
+    &--name {
+      height: 2rem;
+    }
+
+    &--artist {
+      margin: 0.25rem 0.75rem;
+    }
+  }
+}

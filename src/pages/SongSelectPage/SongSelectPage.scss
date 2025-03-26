@@ -5,6 +5,33 @@
   display: flex;
   flex-direction: column;
 
+  &__select-container {
+    height: 60vh;
+    margin: 2rem 2rem 1rem;
+    border-radius: 10px;
+    border: $tertiary-color 1px solid;
+  }
+
+  &__header-wrapper {
+    border: 1px grey solid;
+    width: 8rem;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0 auto;
+    position: relative;
+    bottom: 1.5rem;
+    background-color: white;
+  }
+
+  &__header {
+    margin: 0.5rem;
+  }
+
+  &__songs-wrapper {
+    height: 89%;
+    overflow-y: scroll;
+  }
+
   &__song-details {
     width: 90%;
     margin: 0 auto;
@@ -28,17 +55,19 @@
     &--two {
       display: flex;
       justify-content: space-around;
+      margin-bottom: 0.5rem;
     }
   }
 
   &__img {
-    width: 7rem;
+    width: 9rem;
     height: 7rem;
   }
 
   &__song-info {
     text-align: center;
     background: yellow;
+    margin-bottom: 0.5rem;
 
     &--small {
       background-color: red;
