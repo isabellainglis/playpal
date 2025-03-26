@@ -18,9 +18,12 @@ export default function HomePage() {
             PLAY
           </button>
           <button className="homepage__btn">HOW TO PLAY</button>
+          <button className="homepage__btn">CHORD LIBRARY</button>
           <button className="homepage__btn">REQUEST NEW SONG</button>
         </div>
       </div>
     </section>
   );
 }
+
+// button animation - change shape and go skewed/change colour on hover
