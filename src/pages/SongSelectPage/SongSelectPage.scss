@@ -1,2 +1,51 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+
+.song-select {
+  display: flex;
+  flex-direction: column;
+
+  &__song-details {
+    width: 90%;
+    margin: 0 auto;
+    background-color: grey;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+  }
+
+  &__details-outer-wrapper {
+    width: 50%;
+  }
+
+  &__detail-wrapper {
+    &--one {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &--two {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  &__img {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  &__song-info {
+    text-align: center;
+    background: yellow;
+
+    &--small {
+      background-color: red;
+    }
+
+    &--med {
+      background-color: red;
+    }
+  }
+}
