@@ -40,5 +40,17 @@
     border-radius: 10px;
     border: none;
     margin-bottom: 1rem;
+    transform: rotateY(-15deg) rotateX(25deg) skewY(-6deg);
+    box-shadow: rgba(184, 180, 180, 1) 1.95px 1.95px 2.6px;
+
+    @include tablet-and-above {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      transform: rotateY(6deg) rotateX(4deg) scale(1.02);
+      transition: transform 0.4s ease-out;
+      z-index: 999;
+    }
   }
 }

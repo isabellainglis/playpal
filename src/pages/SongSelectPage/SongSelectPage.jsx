@@ -4,13 +4,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default function SongSelectPage() {
-  const [songs, setSongs] = useState(null);
-  const [selectedSong, setSelectedSong] = useState(null);
-
+export default function SongSelectPage({
+  songs,
+  setSongs,
+  selectedSong,
+  setSelectedSong,
+  fetchChords,
+}) {
   const handleSongSelection = async (song) => {
     setSelectedSong(song);
-    console.log(selectedSong);
+    fetchChords(song);
   };
 
   const fetchSongs = async () => {
