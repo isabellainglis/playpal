@@ -1,8 +1,9 @@
 import "./LyricsDisplay.scss";
 
-export default function LyricsDisplay({ chords }) {
+export default function LyricsDisplay({ chords, section }) {
   return (
     <div>
+      <div>{section}</div>
       {chords.map((singleLyric) => {
         return (
           <span>

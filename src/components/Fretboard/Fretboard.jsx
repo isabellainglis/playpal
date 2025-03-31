@@ -2,8 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import "./Fretboard.scss";
 import { v4 as uuidv4 } from "uuid";
 
-export default function Fretboard({ playing, setPlaying, chords }) {
-  const [chordIndex, setChordIndex] = useState(0);
+export default function Fretboard({
+  playing,
+  setPlaying,
+  chords,
+  chordIndex,
+  setChordIndex,
+  setCurrentSection,
+}) {
   const [circles, setCircles] = useState([]);
   const [circleIdCounter, setCircleIdCounter] = useState(1);
   const triggerLine = useRef(null);
@@ -14,7 +20,8 @@ export default function Fretboard({ playing, setPlaying, chords }) {
       const chord = chords[chordIndex];
       const duration = chord.duration * 1000;
       setSection(chord.section_id);
-      console.log(section);
+      setCurrentSection(chord.section_id);
+
       let position = () => {
         if (chordIndex !== 0) {
           return 0;

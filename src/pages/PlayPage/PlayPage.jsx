@@ -2,14 +2,34 @@ import { useEffect, useRef, useState } from "react";
 import "./PlayPage.scss";
 import Fretboard from "../../components/Fretboard/Fretboard";
 import LyricsDisplay from "../../components/LyricsDisplay/LyricsDisplay";
+import axios from "axios";
 
-export default function PlayPage({ songs, selectedSong, chords }) {
+export default function PlayPage({
+  songs,
+  selectedSong,
+  chords,
+  songSections,
+}) {
   const [playing, setPlaying] = useState(true);
   const audioRef = useRef(null);
+  const [chordIndex, setChordIndex] = useState(0);
+  const [section, setSection] = useState(null);
 
   if (!chords) {
     return <p>Loading...</p>;
   }
+
+  const setCurrentSection = (sectionId) => {
+    console.log(songSections[chordIndex].name);
+
+    for (let i = 0; i < chords.length; i++) {
+      if (songSections[i].section_id === sectionId) {
+        // console.log(songSections[i].name);
+        setSection(songSections[i].name);
+        return;
+      }
+    }
+  };
 
   const handlePlayBtnClick = () => {
     playing ? setPlaying(false) : setPlaying(true);
@@ -38,10 +58,17 @@ export default function PlayPage({ songs, selectedSong, chords }) {
         <button className="play__btn" onClick={handlePlayBtnClick}>
           {playing ? "Pause" : "Play"}
         </button>
-        <Fretboard playing={playing} setPlaying={setPlaying} chords={chords} />
+        <Fretboard
+          playing={playing}
+          setPlaying={setPlaying}
+          chords={chords}
+          chordIndex={chordIndex}
+          setChordIndex={setChordIndex}
+          setCurrentSection={setCurrentSection}
+        />
       </div>
       <div className="play__lyrics-container">
-        <LyricsDisplay chords={chords} />
+        <LyricsDisplay chords={chords} section={section} />
       </div>
     </main>
   );

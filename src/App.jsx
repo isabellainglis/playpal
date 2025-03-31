@@ -11,6 +11,18 @@ function App() {
   const [songs, setSongs] = useState(null);
   const [selectedSong, setSelectedSong] = useState(null);
   const [chords, setChords] = useState(null);
+  const [songSections, setSongSections] = useState(null);
+
+  const fetchSectionsAndLyrics = async (song) => {
+    const songId = song.id;
+
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/songs/${songId}/sections`
+      );
+      setSongSections(data);
+    } catch (error) {}
+  };
 
   const fetchChords = async (song) => {
     const songId = song.id;
@@ -39,6 +51,7 @@ function App() {
               selectedSong={selectedSong}
               setSelectedSong={setSelectedSong}
               fetchChords={fetchChords}
+              fetchSectionsAndLyrics={fetchSectionsAndLyrics}
             />
           }
         />
@@ -51,6 +64,7 @@ function App() {
               selectedSong={selectedSong}
               setSelectedSong={setSelectedSong}
               chords={chords}
+              songSections={songSections}
             />
           }
         />

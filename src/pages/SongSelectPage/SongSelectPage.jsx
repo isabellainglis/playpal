@@ -10,10 +10,12 @@ export default function SongSelectPage({
   selectedSong,
   setSelectedSong,
   fetchChords,
+  fetchSectionsAndLyrics,
 }) {
   const handleSongSelection = async (song) => {
     setSelectedSong(song);
     fetchChords(song);
+    fetchSectionsAndLyrics(song);
   };
 
   const fetchSongs = async () => {
