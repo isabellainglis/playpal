@@ -1,11 +1,23 @@
 .lyrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 30rem;
+
+  &__lyric-container {
+    display: inline-block;
+    height: 3rem;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+  }
+
   &__lyric {
-    margin-left: 1rem;
   }
 
   &__chord {
     display: inline;
-    padding-top: 1rem;
-    position: relative;
+    align-self: flex-start;
+    width: 3rem;
   }
 }
