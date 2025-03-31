@@ -4,4 +4,9 @@
   &__fretboard-container {
     width: 60%;
   }
+
+  &__audio {
+    position: absolute;
+    z-index: 10;
+  }
 }

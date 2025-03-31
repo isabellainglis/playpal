@@ -1,25 +1,36 @@
 import { useEffect, useRef, useState } from "react";
 import "./Fretboard.scss";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Fretboard({ playing, setPlaying, chords }) {
   const [chordIndex, setChordIndex] = useState(0);
   const [circles, setCircles] = useState([]);
   const [circleIdCounter, setCircleIdCounter] = useState(1);
   const triggerLine = useRef(null);
+  const [section, setSection] = useState(null);
 
   const displayEachChord = () => {
     if (playing && chordIndex < chords.length) {
       const chord = chords[chordIndex];
       const duration = chord.duration * 1000;
+      setSection(chord.section_id);
+      console.log(section);
+      let position = () => {
+        if (chordIndex !== 0) {
+          return 0;
+        } else {
+          return 300;
+        }
+      };
 
       const newCircle = {
         id: circleIdCounter,
-        position: 0,
+        position: position(),
         chord: chord.name,
       };
 
       setCircles((prevCircles) => [...prevCircles, newCircle]);
-      setCircleIdCounter((prevId) => prevId + 1);
+      setCircleIdCounter(circleIdCounter + 1);
 
       const timer = setTimeout(() => {
         setChordIndex(chordIndex + 1);
@@ -68,11 +79,11 @@ export default function Fretboard({ playing, setPlaying, chords }) {
 
         {circles.map((circle) => (
           <div
-            // key={circle.id}
+            key={uuidv4()}
             className="fretboard__circle circle"
             style={{ top: `${circle.position}px`, left: "50%" }}
           >
-            <span>{circle.chord}</span>
+            <span className="fretboard__circle-chord">{circle.chord}</span>
           </div>
         ))}
       </div>

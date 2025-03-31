@@ -1,0 +1,11 @@
+.lyrics {
+  &__lyric {
+    margin-left: 1rem;
+  }
+
+  &__chord {
+    display: inline;
+    padding-top: 1rem;
+    position: relative;
+  }
+}
