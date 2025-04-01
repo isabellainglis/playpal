@@ -57,7 +57,7 @@ export default function Fretboard({
         setCircles((prevCircles) =>
           prevCircles
             .map((circle) => ({ ...circle, position: circle.position + 2 }))
-            .filter((circle) => circle.position < 700)
+            .filter((circle) => circle.position < 600)
             .slice(-2)
         );
       }, 16);

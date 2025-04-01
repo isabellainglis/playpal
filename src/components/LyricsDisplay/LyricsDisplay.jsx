@@ -10,7 +10,7 @@ export default function LyricsDisplay({
 }) {
   return (
     <div className="lyrics">
-      <div>{section}</div>
+      <div className="lyrics__section">{section}</div>
       <div className="lyrics__container">
         {chords.map((singleLyric, index) => {
           return (

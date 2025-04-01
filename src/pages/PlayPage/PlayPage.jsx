@@ -23,9 +23,14 @@ export default function PlayPage({
 
   const setCurrentSection = (sectionId) => {
     for (let i = 0; i < chords.length; i++) {
-      if (songSections[i].section_id === sectionId) {
-        setSection(songSections[i].name);
-        setSectionId(songSections[i].section_id);
+      const currentSection = songSections[i];
+      if (currentSection.section_id === sectionId) {
+        const sectionOriginalName = currentSection.name;
+        const regex = /[1-9]/;
+        const sectionAmendedName = sectionOriginalName.replace(regex, "");
+
+        setSection(sectionAmendedName);
+        setSectionId(currentSection.section_id);
         return;
       }
     }

@@ -26,7 +26,7 @@ export default function SectionLyrics({ singleLyric, index, chordIndex }) {
         </span>
       ) : (
         <span
-          className={`section-lyrics__chord ${chordIndex > index ? "" : ""} ${
+          className={` ${chordIndex > index ? "" : "section-lyrics__chord"} ${
             index === chordIndex ? "section-lyrics__chord--highlight" : ""
           }`}
         >

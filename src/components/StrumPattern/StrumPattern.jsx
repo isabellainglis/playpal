@@ -13,18 +13,25 @@ export default function StrumPattern({ chords, chordIndex, playing }) {
       return;
     }
 
-    const bar = str.split(" ");
-    setBars(bar);
+    if (chordIndex < chords.length) {
+      const bar = str.split(" ");
+      setBars(bar);
 
-    const strum1 = bar[0].split(",");
-    const strum2 = bar[1].split(",");
+      const strum1 = bar[0].split(",");
+      const strum2 = bar[1].split(",");
 
-    setStrumOne(strum1);
-    setStrumTwo(strum2);
+      setStrumOne(strum1);
+      setStrumTwo(strum2);
+    }
   };
 
   const fetchStrumPattern = () => {
-    setStrumPattern(chords[chordIndex].strum_pattern);
+    const currentStrumPattern = chords[chordIndex].strum_pattern;
+
+    if (!currentStrumPattern) {
+      return;
+    }
+    setStrumPattern(currentStrumPattern);
 
     splitStrumPattern(strumPattern);
   };
@@ -45,13 +52,13 @@ export default function StrumPattern({ chords, chordIndex, playing }) {
               {strum === "D" ? (
                 <img
                   className="strum-pattern__arrow"
-                  src="../../../images/down-arrow.svg"
+                  src="../../../images/down.webp"
                   alt="down arrow"
                 />
               ) : (
                 <img
                   className="strum-pattern__arrow"
-                  src="../../../images/up-arrow.svg"
+                  src="../../../images/up.webp"
                   alt="up arrow"
                 />
               )}
@@ -66,13 +73,13 @@ export default function StrumPattern({ chords, chordIndex, playing }) {
               {strum === "D" ? (
                 <img
                   className="strum-pattern__arrow"
-                  src="../../../images/down-arrow.svg"
+                  src="../../../images/down.webp"
                   alt="down arrow"
                 />
               ) : (
                 <img
                   className="strum-pattern__arrow"
-                  src="../../../images/up-arrow.svg"
+                  src="../../../images/up.webp"
                   alt="up arrow"
                 />
               )}
