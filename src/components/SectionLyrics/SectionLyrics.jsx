@@ -1,9 +1,8 @@
 import "./SectionLyrics.scss";
-import { v4 as uuidv4 } from "uuid";
 
 export default function SectionLyrics({ singleLyric, index, chordIndex }) {
   return (
-    <span key={uuidv4()} className="section-lyrics">
+    <span className="section-lyrics">
       <span
         className={`section-lyrics__lyric ${chordIndex > index ? "" : ""} ${
           index === chordIndex ? "section-lyrics__lyric--highlight" : ""

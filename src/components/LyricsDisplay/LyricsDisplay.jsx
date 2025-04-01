@@ -1,6 +1,5 @@
 import SectionLyrics from "../SectionLyrics/SectionLyrics";
 import "./LyricsDisplay.scss";
-import { v4 as uuidv4 } from "uuid";
 
 export default function LyricsDisplay({
   chords,
@@ -14,7 +13,7 @@ export default function LyricsDisplay({
       <div className="lyrics__container">
         {chords.map((singleLyric, index) => {
           return (
-            <div key={uuidv4()}>
+            <div key={singleLyric.id}>
               {sectionId === singleLyric.section_id ? (
                 <SectionLyrics
                   singleLyric={singleLyric}

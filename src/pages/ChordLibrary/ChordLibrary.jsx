@@ -1,7 +1,6 @@
 import axios from "axios";
 import "./ChordLibrary.scss";
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 export default function ChordLibrary({ chords, songs }) {
   const [chordLib, setChordLib] = useState(null);
@@ -35,10 +34,9 @@ export default function ChordLibrary({ chords, songs }) {
       <div className="chord-lib__wrapper">
         {chordLib.map((chord) => {
           return (
-            <div className="chord-lib__chord-container">
+            <div key={chord.id} className="chord-lib__chord-container">
               <div className="chord-lib__chord">{chord.name}</div>
               <img
-                key={uuidv4()}
                 className="chord-lib__img"
                 src={`../../../images/chords/${chord.img}.png`}
                 alt={`${chord.name} chord diagram`}
