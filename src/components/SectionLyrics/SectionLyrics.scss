@@ -1,0 +1,34 @@
+.section-lyrics {
+  display: inline-block;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+
+  &__lyric {
+    color: #625f5f;
+    &--highlight {
+      //   -webkit-text-fill-color: rgb(78, 149, 152);
+      transform: scale(1.1);
+      font-weight: bold;
+      animation: pulse 0.5s ease-out;
+      color: black;
+    }
+  }
+
+  &__chord {
+    display: inline;
+    align-self: flex-start;
+    display: flex;
+    // justify-content: center;
+    width: 3rem;
+
+    &--alt {
+      padding-bottom: 1.2rem;
+    }
+
+    &--highlight {
+      text-decoration: underline;
+    }
+  }
+}

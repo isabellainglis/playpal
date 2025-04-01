@@ -3,6 +3,7 @@ import "./PlayPage.scss";
 import Fretboard from "../../components/Fretboard/Fretboard";
 import LyricsDisplay from "../../components/LyricsDisplay/LyricsDisplay";
 import axios from "axios";
+import StrumPattern from "../../components/StrumPattern/StrumPattern";
 
 export default function PlayPage({
   songs,
@@ -66,13 +67,22 @@ export default function PlayPage({
           setCurrentSection={setCurrentSection}
         />
       </div>
-      <div className="play__lyrics-container">
-        <LyricsDisplay
-          chords={chords}
-          section={section}
-          chordIndex={chordIndex}
-          sectionId={sectionId}
-        />
+      <div className="play__wrapper">
+        <div className="play__lyrics-container">
+          <LyricsDisplay
+            chords={chords}
+            section={section}
+            chordIndex={chordIndex}
+            sectionId={sectionId}
+          />
+        </div>
+        <div className="play__strum-pattern-container">
+          <StrumPattern
+            chords={chords}
+            chordIndex={chordIndex}
+            playing={playing}
+          />
+        </div>
       </div>
     </main>
   );

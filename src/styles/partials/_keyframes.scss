@@ -11,3 +11,27 @@
     color: black;
   }
 }
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes background-move {
+  0% {
+    background-position: 0%;
+  }
+
+  50% {
+    background-position: 50%;
+  }
+
+  100% {
+    background-position: 100%;
+  }
+}

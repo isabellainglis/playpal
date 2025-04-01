@@ -1,0 +1,20 @@
+.strum-pattern {
+  display: flex;
+  flex-direction: row;
+
+  &__bar {
+    margin-left: 5rem;
+  }
+
+  &__wrapper {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    animation: fade 2s infinite;
+  }
+
+  &__arrow {
+    width: 2rem;
+  }
+}
