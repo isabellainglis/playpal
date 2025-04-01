@@ -6,6 +6,7 @@ import SongSelectPage from "./pages/SongSelectPage/SongSelectPage";
 import PlayPage from "./pages/PlayPage/PlayPage";
 import { useState } from "react";
 import axios from "axios";
+import ChordLibrary from "./pages/ChordLibrary/ChordLibrary";
 
 function App() {
   const [songs, setSongs] = useState(null);
@@ -21,7 +22,9 @@ function App() {
         `${import.meta.env.VITE_BACKEND_URL}/songs/${songId}/sections`
       );
       setSongSections(data);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const fetchChords = async (song) => {
@@ -67,6 +70,10 @@ function App() {
               songSections={songSections}
             />
           }
+        />
+        <Route
+          path="/chord-library"
+          element={<ChordLibrary chords={chords} song={songs} />}
         />
       </Routes>
     </BrowserRouter>

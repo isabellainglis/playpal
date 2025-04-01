@@ -18,7 +18,12 @@ export default function HomePage() {
             PLAY
           </button>
           <button className="homepage__btn">HOW TO PLAY</button>
-          <button className="homepage__btn">CHORD LIBRARY</button>
+          <button
+            className="homepage__btn"
+            onClick={() => navigate("/chord-library")}
+          >
+            CHORD LIBRARY
+          </button>
           <button className="homepage__btn">REQUEST NEW SONG</button>
         </div>
       </div>

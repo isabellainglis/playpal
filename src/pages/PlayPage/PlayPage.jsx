@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import "./PlayPage.scss";
 import Fretboard from "../../components/Fretboard/Fretboard";
 import LyricsDisplay from "../../components/LyricsDisplay/LyricsDisplay";
-import axios from "axios";
 import StrumPattern from "../../components/StrumPattern/StrumPattern";
 
 export default function PlayPage({
