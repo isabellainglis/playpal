@@ -45,8 +45,10 @@
 
   &__trigger-line {
     border-bottom: red solid 1px;
+    position: relative;
+    z-index: 100;
     width: 300px;
     margin: 0 auto;
-    height: 20px;
+    // height: 20px;
   }
 }

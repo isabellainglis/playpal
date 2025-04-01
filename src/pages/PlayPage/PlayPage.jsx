@@ -14,18 +14,17 @@ export default function PlayPage({
   const audioRef = useRef(null);
   const [chordIndex, setChordIndex] = useState(0);
   const [section, setSection] = useState(null);
+  const [sectionId, setSectionId] = useState(null);
 
   if (!chords) {
     return <p>Loading...</p>;
   }
 
   const setCurrentSection = (sectionId) => {
-    console.log(songSections[chordIndex].name);
-
     for (let i = 0; i < chords.length; i++) {
       if (songSections[i].section_id === sectionId) {
-        // console.log(songSections[i].name);
         setSection(songSections[i].name);
+        setSectionId(songSections[i].section_id);
         return;
       }
     }
@@ -68,7 +67,12 @@ export default function PlayPage({
         />
       </div>
       <div className="play__lyrics-container">
-        <LyricsDisplay chords={chords} section={section} />
+        <LyricsDisplay
+          chords={chords}
+          section={section}
+          chordIndex={chordIndex}
+          sectionId={sectionId}
+        />
       </div>
     </main>
   );
