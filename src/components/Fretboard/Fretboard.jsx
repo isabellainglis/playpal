@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 export default function Fretboard({
   playing,
   setPlaying,
-  chords,
+  selectedSongChords,
   chordIndex,
   setChordIndex,
   setCurrentSection,
@@ -16,8 +16,8 @@ export default function Fretboard({
   const [section, setSection] = useState(null);
 
   const displayEachChord = () => {
-    if (playing && chordIndex < chords.length) {
-      const chord = chords[chordIndex];
+    if (playing && chordIndex < selectedSongChords.length) {
+      const chord = selectedSongChords[chordIndex];
       const duration = chord.duration * 1000;
       setSection(chord.section_id);
       setCurrentSection(chord.section_id);
@@ -49,7 +49,7 @@ export default function Fretboard({
 
   useEffect(() => {
     displayEachChord();
-  }, [chordIndex, chords, playing]);
+  }, [chordIndex, selectedSongChords, playing]);
 
   const moveCircles = () => {
     if (playing) {

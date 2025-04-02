@@ -7,7 +7,7 @@ import StrumPattern from "../../components/StrumPattern/StrumPattern";
 export default function PlayPage({
   songs,
   selectedSong,
-  chords,
+  selectedSongChords,
   songSections,
 }) {
   const [playing, setPlaying] = useState(true);
@@ -16,12 +16,12 @@ export default function PlayPage({
   const [section, setSection] = useState(null);
   const [sectionId, setSectionId] = useState(null);
 
-  if (!chords) {
+  if (!selectedSongChords) {
     return <p>Loading...</p>;
   }
 
   const setCurrentSection = (sectionId) => {
-    for (let i = 0; i < chords.length; i++) {
+    for (let i = 0; i < selectedSongChords.length; i++) {
       const currentSection = songSections[i];
       if (currentSection.section_id === sectionId) {
         const sectionOriginalName = currentSection.name;
@@ -65,7 +65,7 @@ export default function PlayPage({
         <Fretboard
           playing={playing}
           setPlaying={setPlaying}
-          chords={chords}
+          selectedSongChords={selectedSongChords}
           chordIndex={chordIndex}
           setChordIndex={setChordIndex}
           setCurrentSection={setCurrentSection}
@@ -74,7 +74,7 @@ export default function PlayPage({
       <div className="play__wrapper">
         <div className="play__lyrics-container">
           <LyricsDisplay
-            chords={chords}
+            selectedSongChords={selectedSongChords}
             section={section}
             chordIndex={chordIndex}
             sectionId={sectionId}
@@ -82,7 +82,7 @@ export default function PlayPage({
         </div>
         <div className="play__strum-pattern-container">
           <StrumPattern
-            chords={chords}
+            selectedSongChords={selectedSongChords}
             chordIndex={chordIndex}
             playing={playing}
           />

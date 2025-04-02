@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import "./StrumPattern.scss";
 import { v4 as uuidv4 } from "uuid";
 
-export default function StrumPattern({ chords, chordIndex, playing }) {
+export default function StrumPattern({
+  selectedSongChords,
+  chordIndex,
+  playing,
+}) {
   const [strumPattern, setStrumPattern] = useState(null);
   const [bars, setBars] = useState(null);
   const [strumOne, setStrumOne] = useState(null);
@@ -13,7 +17,7 @@ export default function StrumPattern({ chords, chordIndex, playing }) {
       return;
     }
 
-    if (chordIndex < chords.length) {
+    if (chordIndex < selectedSongChords.length) {
       const bar = str.split(" ");
       setBars(bar);
 
@@ -26,7 +30,7 @@ export default function StrumPattern({ chords, chordIndex, playing }) {
   };
 
   const fetchStrumPattern = () => {
-    const currentStrumPattern = chords[chordIndex].strum_pattern;
+    const currentStrumPattern = selectedSongChords[chordIndex].strum_pattern;
 
     if (!currentStrumPattern) {
       return;
