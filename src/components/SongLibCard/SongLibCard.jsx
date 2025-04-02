@@ -6,10 +6,10 @@ import {
 import SongDifficulty from "../SongDifficulty/SongDifficulty";
 import "./SongLibCard.scss";
 
-export default function SongLibCard({ song }) {
+export default function SongLibCard({ song, selectedChord }) {
   const [allChords, setAllChords] = useState(null);
 
-  const fetchChords = async (songId) => {
+  const fetchChords = async () => {
     try {
       const data = await fetchAllSongChords();
 
@@ -28,8 +28,6 @@ export default function SongLibCard({ song }) {
   }
 
   const renderChords = (songId) => {
-    const chordsArr = [];
-
     const chords = allChords.filter((chord) => {
       return chord.song_id == songId;
     });
@@ -41,19 +39,8 @@ export default function SongLibCard({ song }) {
         </div>
       );
     });
-
-    // data.map((chord) => {
-    //   let i = 0;
-    //   chordsArr.push(chord.name);
-
-    //   i++;
-    // });
-    // console.log(chords);
   };
 
-  // renderChords(song.id);
-
-  //   console.log(song);
   return (
     <div className="song-card">
       <div className="song-card__difficulty">

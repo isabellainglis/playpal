@@ -56,13 +56,13 @@ export default function StrumPattern({
               {strum === "D" ? (
                 <img
                   className="strum-pattern__arrow"
-                  src="../../../images/down.webp"
+                  src="../../../icons/down.webp"
                   alt="down arrow"
                 />
               ) : (
                 <img
                   className="strum-pattern__arrow"
-                  src="../../../images/up.webp"
+                  src="../../../icons/up.webp"
                   alt="up arrow"
                 />
               )}
@@ -77,13 +77,13 @@ export default function StrumPattern({
               {strum === "D" ? (
                 <img
                   className="strum-pattern__arrow"
-                  src="../../../images/down.webp"
+                  src="../../../icons/down.webp"
                   alt="down arrow"
                 />
               ) : (
                 <img
                   className="strum-pattern__arrow"
-                  src="../../../images/up.webp"
+                  src="../../../icons/up.webp"
                   alt="up arrow"
                 />
               )}

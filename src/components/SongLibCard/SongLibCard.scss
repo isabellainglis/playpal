@@ -4,8 +4,6 @@
   text-align: center;
   width: 15rem;
 
-  &__difficulty {
-  }
   &__img {
     width: 7rem;
   }
@@ -27,5 +25,6 @@
     background-color: orange;
     border-radius: 5px;
     width: 3.5rem;
+    padding: 0.1rem 0;
   }
 }
