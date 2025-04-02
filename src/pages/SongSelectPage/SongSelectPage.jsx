@@ -5,16 +5,8 @@ import SongDetailsCard from "../../components/SongDetailsCard/SongDetailsCard";
 export default function SongSelectPage({
   songs,
   selectedSong,
-  setSelectedSong,
-  fetchSongDetails,
-  fetchSectionsAndLyrics,
+  handleSongSelection,
 }) {
-  const handleSongSelection = async (song) => {
-    setSelectedSong(song);
-    fetchSongDetails(song);
-    fetchSectionsAndLyrics(song);
-  };
-
   if (!songs) {
     return <p>Loading...</p>;
   }

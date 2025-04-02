@@ -1,4 +1,6 @@
 .chord-lib {
+  margin-right: 3rem;
+
   &__title {
     margin-left: 2rem;
     font-size: 2rem;
@@ -26,14 +28,14 @@
   }
 
   &__chords-container {
-    height: 40vh;
-    overflow-y: scroll;
   }
 
   &__chords {
     padding-top: 1rem;
     display: flex;
     margin-left: 2rem;
+    height: 30vh;
+    overflow-y: scroll;
   }
 
   &__songs-container {

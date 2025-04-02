@@ -18,6 +18,12 @@ function App() {
   const [selectedSongChords, setSelectedSongChords] = useState(null);
   const [songSections, setSongSections] = useState(null);
 
+  const handleSongSelection = async (song) => {
+    setSelectedSong(song);
+    fetchSongDetails(song);
+    fetchSectionsAndLyrics(song);
+  };
+
   const fetchSectionsAndLyrics = async (song) => {
     const songId = song.id;
 
@@ -65,9 +71,7 @@ function App() {
             <SongSelectPage
               songs={songs}
               selectedSong={selectedSong}
-              setSelectedSong={setSelectedSong}
-              fetchSongDetails={fetchSongDetails}
-              fetchSectionsAndLyrics={fetchSectionsAndLyrics}
+              handleSongSelection={handleSongSelection}
             />
           }
         />
@@ -86,8 +90,9 @@ function App() {
           path="/chord-library"
           element={
             <ChordLibrary
-              selectedSongChords={selectedSongChords}
               songs={songs}
+              selectedSong={selectedSong}
+              handleSongSelection={handleSongSelection}
             />
           }
         />

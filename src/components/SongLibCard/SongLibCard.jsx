@@ -1,51 +1,29 @@
-import { useEffect, useState } from "react";
-import {
-  fetchAllSongChords,
-  fetchSingleSongChords,
-} from "../../utils/apiCalls";
 import SongDifficulty from "../SongDifficulty/SongDifficulty";
 import "./SongLibCard.scss";
+import { Link } from "react-router-dom";
 
-export default function SongLibCard({ song, selectedChord }) {
-  const [allChords, setAllChords] = useState(null);
+export default function SongLibCard({ song, handleSongSelection }) {
+  const displaySongChords = () => {
+    const chords = song.chords;
+    const chordsArr = chords.split(", ");
 
-  const fetchChords = async () => {
-    try {
-      const data = await fetchAllSongChords();
+    let uniqueChords = [...new Set(chordsArr)];
 
-      setAllChords(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchChords();
-  }, []);
-
-  if (!allChords) {
-    return;
-  }
-
-  const renderChords = (songId) => {
-    const chords = allChords.filter((chord) => {
-      return chord.song_id == songId;
-    });
-
-    return chords.map((chord) => {
+    return uniqueChords.map((chord) => {
       return (
         <div className="song-card__chord" key={chord.id}>
-          {chord.name}
+          {chord}
         </div>
       );
     });
   };
 
   return (
-    <div className="song-card">
+    <div className="song-card" onClick={() => handleSongSelection(song)}>
       <div className="song-card__difficulty">
         <SongDifficulty songDifficultyLevel={song.difficulty} />
       </div>
+
       <div className="song-card__img-wrapper">
         <img
           src={`${import.meta.env.VITE_BACKEND_URL}/images/${song.img}.png`}
@@ -64,7 +42,10 @@ export default function SongLibCard({ song, selectedChord }) {
       <div className="song-card__capo">
         {song.capo === 0 ? "No capo" : `Capo: ${song.capo}th fret`}
       </div>
-      <div className="song-card__chords">{renderChords(song.id)}</div>
+      <div className="song-card__chords">{displaySongChords()}</div>
+      <Link to="/play">
+        <button>play</button>
+      </Link>
     </div>
   );
 }

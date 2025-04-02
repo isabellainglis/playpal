@@ -5,11 +5,13 @@ import Chord from "../../components/Chord/Chord";
 import SongLibCard from "../../components/SongLibCard/SongLibCard";
 import { fetchAllChords } from "../../utils/apiCalls";
 
-export default function ChordLibrary({ selectedSongChords, songs }) {
+export default function ChordLibrary({
+  handleSongSelection,
+  songs,
+  selectedSong,
+}) {
   const [chordLib, setChordLib] = useState(null);
   const [selectedChord, setSelectedChord] = useState(null);
-
-  // select chord and it filters the songs in the section below
 
   const fetchChords = async () => {
     try {
@@ -89,7 +91,10 @@ export default function ChordLibrary({ selectedSongChords, songs }) {
           {filteredSongs.map((song) => {
             return (
               <div key={song.id} className="chord-lib__song">
-                <SongLibCard song={song} selectedChord={selectedChord} />
+                <SongLibCard
+                  song={song}
+                  handleSongSelection={handleSongSelection}
+                />
               </div>
             );
           })}

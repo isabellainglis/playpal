@@ -24,18 +24,6 @@ const fetchAllChords = async () => {
   }
 };
 
-const fetchAllSongChords = async () => {
-  try {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL}/chords/all`
-    );
-
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
-
 const fetchSingleSongDetails = async (songId) => {
   try {
     const { data } = await axios.get(
@@ -75,7 +63,6 @@ const fetchSingleSongLyrics = async (songId) => {
 export {
   fetchAllSongs,
   fetchAllChords,
-  fetchAllSongChords,
   fetchSingleSongDetails,
   fetchSingleSongChords,
   fetchSingleSongLyrics,

@@ -22,7 +22,7 @@ export default function HomePage() {
             className="homepage__btn"
             onClick={() => navigate("/chord-library")}
           >
-            CHORD LIBRARY
+            LIBRARY
           </button>
           <button className="homepage__btn">REQUEST NEW SONG</button>
         </div>
