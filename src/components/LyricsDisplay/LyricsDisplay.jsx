@@ -13,7 +13,7 @@ export default function LyricsDisplay({
       <div className="lyrics__container">
         {chords.map((singleLyric, index) => {
           return (
-            <div key={singleLyric.id}>
+            <div key={index}>
               {sectionId === singleLyric.section_id ? (
                 <SectionLyrics
                   singleLyric={singleLyric}

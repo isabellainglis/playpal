@@ -1,6 +1,8 @@
 import axios from "axios";
 import "./ChordLibrary.scss";
 import { useEffect, useState } from "react";
+import Chord from "../../components/Chord/Chord";
+import SongDetailsCard from "../../components/SongDetailsCard/SongDetailsCard";
 
 export default function ChordLibrary({ chords, songs }) {
   const [chordLib, setChordLib] = useState(null);
@@ -24,30 +26,31 @@ export default function ChordLibrary({ chords, songs }) {
     fetchAllChords();
   }, []);
 
-  if (!chordLib) {
+  if (!chordLib || !songs) {
     return;
   }
 
   return (
     <div className="chord-lib">
-      <h1 className="chord-lib__title">Chord Library</h1>
-      <div className="chord-lib__wrapper">
-        {chordLib.map((chord) => {
-          return (
-            <div key={chord.id} className="chord-lib__chord-container">
-              <div className="chord-lib__chord">{chord.name}</div>
-              <img
-                className="chord-lib__img"
-                src={`../../../images/chords/${chord.img}.png`}
-                alt={`${chord.name} chord diagram`}
-                onClick={() => setSelectedChord(chord)}
-              />
-            </div>
-          );
-        })}
+      <div className="chord-lib__chords-container">
+        <h2 className="chord-lib__title">Chord Library</h2>
+        <div className="chord-lib__chords">
+          {chordLib.map((chord) => {
+            return <Chord key={chord.id} chord={chord} />;
+          })}
+        </div>
       </div>
-      <div className="chord-lib__chord-details">
-        <div className="chord-lib__chord-name"></div>
+      <div className="chord-lib__songs-container">
+        <h2 className="chord-lib__title">Songs Library</h2>
+        <div className="chord-lib__songs">
+          {songs.map((song) => {
+            return (
+              <div className="chord-lib__song">
+                <SongDetailsCard selectedSong={song} />;
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

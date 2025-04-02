@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./StrumPattern.scss";
+import { v4 as uuidv4 } from "uuid";
 
 export default function StrumPattern({ chords, chordIndex, playing }) {
   const [strumPattern, setStrumPattern] = useState(null);
@@ -47,7 +48,7 @@ export default function StrumPattern({ chords, chordIndex, playing }) {
       <div className="strum-pattern__wrapper">
         {strumOne.map((strum) => {
           return (
-            <div key={strum.id} className="strum-pattern__individual-wrapper">
+            <div key={uuidv4()} className="strum-pattern__individual-wrapper">
               {strum === "D" ? (
                 <img
                   className="strum-pattern__arrow"
@@ -68,7 +69,7 @@ export default function StrumPattern({ chords, chordIndex, playing }) {
       <div className="strum-pattern__wrapper">
         {strumTwo.map((strum) => {
           return (
-            <div key={strum.id} className="strum-pattern__individual-wrapper">
+            <div key={uuidv4()} className="strum-pattern__individual-wrapper">
               {strum === "D" ? (
                 <img
                   className="strum-pattern__arrow"

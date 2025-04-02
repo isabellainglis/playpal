@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import HomePage from "./pages/HomePage/HomePage";
 import SongSelectPage from "./pages/SongSelectPage/SongSelectPage";
 import PlayPage from "./pages/PlayPage/PlayPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import ChordLibrary from "./pages/ChordLibrary/ChordLibrary";
 
@@ -40,6 +40,22 @@ function App() {
     }
   };
 
+  const fetchSongs = async () => {
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/songs`
+      );
+
+      setSongs(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSongs();
+  }, []);
+
   return (
     <BrowserRouter>
       <Header />
@@ -50,7 +66,6 @@ function App() {
           element={
             <SongSelectPage
               songs={songs}
-              setSongs={setSongs}
               selectedSong={selectedSong}
               setSelectedSong={setSelectedSong}
               fetchChords={fetchChords}
@@ -63,9 +78,7 @@ function App() {
           element={
             <PlayPage
               songs={songs}
-              setSongs={setSongs}
               selectedSong={selectedSong}
-              setSelectedSong={setSelectedSong}
               chords={chords}
               songSections={songSections}
             />
@@ -73,7 +86,7 @@ function App() {
         />
         <Route
           path="/chord-library"
-          element={<ChordLibrary chords={chords} song={songs} />}
+          element={<ChordLibrary chords={chords} songs={songs} />}
         />
       </Routes>
     </BrowserRouter>
