@@ -2,19 +2,18 @@ import axios from "axios";
 import "./ChordLibrary.scss";
 import { useEffect, useState } from "react";
 import Chord from "../../components/Chord/Chord";
-import SongDetailsCard from "../../components/SongDetailsCard/SongDetailsCard";
+import SongLibCard from "../../components/SongLibCard/SongLibCard";
+import { fetchAllChords } from "../../utils/apiCalls";
 
-export default function ChordLibrary({ chords, songs }) {
+export default function ChordLibrary({ selectedSongChords, songs }) {
   const [chordLib, setChordLib] = useState(null);
   const [selectedChord, setSelectedChord] = useState(null);
 
   // select chord and it filters the songs in the section below
 
-  const fetchAllChords = async () => {
+  const fetchChords = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/chords`
-      );
+      const data = await fetchAllChords();
 
       setChordLib(data);
     } catch (error) {
@@ -22,13 +21,18 @@ export default function ChordLibrary({ chords, songs }) {
     }
   };
 
+  const handleChordSelection = (chord) => {
+    setSelectedChord(chord);
+  };
+
   useEffect(() => {
-    fetchAllChords();
+    fetchChords();
   }, []);
 
   if (!chordLib || !songs) {
     return;
   }
+  console.log(selectedChord);
 
   return (
     <div className="chord-lib">
@@ -36,17 +40,24 @@ export default function ChordLibrary({ chords, songs }) {
         <h2 className="chord-lib__title">Chord Library</h2>
         <div className="chord-lib__chords">
           {chordLib.map((chord) => {
-            return <Chord key={chord.id} chord={chord} />;
+            return (
+              <Chord
+                key={chord.id}
+                chord={chord}
+                setSelectedChord={setSelectedChord}
+                handleChordSelection={handleChordSelection}
+              />
+            );
           })}
         </div>
       </div>
       <div className="chord-lib__songs-container">
-        <h2 className="chord-lib__title">Songs Library</h2>
+        <h2 className="chord-lib__title">Song Library</h2>
         <div className="chord-lib__songs">
           {songs.map((song) => {
             return (
-              <div className="chord-lib__song">
-                <SongDetailsCard selectedSong={song} />;
+              <div key={song.id} className="chord-lib__song">
+                <SongLibCard song={song} />
               </div>
             );
           })}

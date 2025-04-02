@@ -1,0 +1,31 @@
+.song-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 15rem;
+
+  &__difficulty {
+  }
+  &__img {
+    width: 7rem;
+  }
+
+  &__info-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__chords {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  &__chord {
+    margin: 0.2rem;
+    background-color: orange;
+    border-radius: 5px;
+    width: 3.5rem;
+  }
+}

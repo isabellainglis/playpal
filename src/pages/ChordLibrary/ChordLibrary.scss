@@ -12,4 +12,17 @@
     padding-top: 1rem;
     display: flex;
   }
+
+  &__songs-container {
+    overflow-y: scroll;
+  }
+
+  &__songs {
+    display: flex;
+    margin: 1rem;
+  }
+
+  &__song {
+    padding-right: 2rem;
+  }
 }
