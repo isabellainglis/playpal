@@ -9,6 +9,7 @@ export default function Fretboard({
   chordIndex,
   setChordIndex,
   setCurrentSection,
+  selectedSong,
 }) {
   const [circles, setCircles] = useState([]);
   const [circleIdCounter, setCircleIdCounter] = useState(1);
@@ -19,27 +20,26 @@ export default function Fretboard({
     if (playing && chordIndex < selectedSongChords.length) {
       const chord = selectedSongChords[chordIndex];
       const duration = chord.duration * 1000;
-      setSection(chord.section_id);
-      setCurrentSection(chord.section_id);
 
-      let position = () => {
-        if (chordIndex !== 0) {
-          return 0;
-        } else {
-          return 300;
-        }
-      };
+      setSection(chord.section_id);
+      if (!chord.name) {
+        setCurrentSection(1);
+      } else {
+        setCurrentSection(chord.section_id);
+      }
+
+      let position = 0;
 
       const newCircle = {
         id: circleIdCounter,
-        position: position(),
+        position: position,
         chord: chord.name,
       };
 
       setCircles((prevCircles) => [...prevCircles, newCircle]);
       setCircleIdCounter(circleIdCounter + 1);
 
-      const timer = setTimeout(() => {
+      let timer = setTimeout(() => {
         setChordIndex(chordIndex + 1);
       }, duration);
 
@@ -54,12 +54,19 @@ export default function Fretboard({
   const moveCircles = () => {
     if (playing) {
       const moveInterval = setInterval(() => {
-        setCircles((prevCircles) =>
-          prevCircles
-            .map((circle) => ({ ...circle, position: circle.position + 2 }))
-            .filter((circle) => circle.position < 600)
-            .slice(-2)
-        );
+        if (selectedSong.name === "The Only Exception") {
+          setCircles((prevCircles) =>
+            prevCircles
+              .map((circle) => ({ ...circle, position: circle.position + 2.5 }))
+              .filter((circle) => circle.position < 550)
+          );
+        } else {
+          setCircles((prevCircles) =>
+            prevCircles
+              .map((circle) => ({ ...circle, position: circle.position + 2 }))
+              .filter((circle) => circle.position < 550)
+          );
+        }
       }, 16);
       return () => clearInterval(moveInterval);
     }
@@ -87,7 +94,9 @@ export default function Fretboard({
         {circles.map((circle) => (
           <div
             key={uuidv4()}
-            className="fretboard__circle circle"
+            className={`fretboard__circle ${
+              circleIdCounter === 2 ? "fretboard__circle--first" : ""
+            }`}
             style={{ top: `${circle.position}px`, left: "50%" }}
           >
             <span className="fretboard__circle-chord">{circle.chord}</span>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./SongDetailsCard.scss";
 import SongDifficulty from "../SongDifficulty/SongDifficulty";
 
-export default function SongDetailsCard({ selectedSong }) {
+export default function SongDetailsCard({ selectedSong, displaySongChords }) {
   return (
     <section className="song-details">
       <div className="song-details__title"></div>
@@ -37,6 +37,9 @@ export default function SongDetailsCard({ selectedSong }) {
               </div>
               <div className="song-details__song-info song-details__song-info">
                 {selectedSong.artist}
+              </div>
+              <div className="song-details__chords">
+                {displaySongChords(selectedSong)}
               </div>
               <Link to="/play">
                 <button className="song-details__btn">PLAY</button>

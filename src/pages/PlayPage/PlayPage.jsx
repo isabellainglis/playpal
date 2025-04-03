@@ -5,16 +5,18 @@ import LyricsDisplay from "../../components/LyricsDisplay/LyricsDisplay";
 import StrumPattern from "../../components/StrumPattern/StrumPattern";
 
 export default function PlayPage({
-  songs,
   selectedSong,
   selectedSongChords,
   songSections,
+  displaySongChords,
 }) {
   const [playing, setPlaying] = useState(true);
   const audioRef = useRef(null);
   const [chordIndex, setChordIndex] = useState(0);
   const [section, setSection] = useState(null);
   const [sectionId, setSectionId] = useState(null);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [audioStarted, setAudioStarted] = useState(false);
 
   if (!selectedSongChords) {
     return <p>Loading...</p>;
@@ -23,6 +25,7 @@ export default function PlayPage({
   const setCurrentSection = (sectionId) => {
     for (let i = 0; i < selectedSongChords.length; i++) {
       const currentSection = songSections[i];
+
       if (currentSection.section_id === sectionId) {
         const sectionOriginalName = currentSection.name;
         const regex = /[1-9]/;
@@ -34,6 +37,18 @@ export default function PlayPage({
       }
     }
   };
+
+  useEffect(() => {
+    if (selectedSong.name === "The Only Exception") {
+      setTimeout(() => {
+        setAudioStarted(true);
+      }, 4700);
+    } else if (selectedSong.name === "Learn To Fly") {
+      setTimeout(() => {
+        setAudioStarted(true);
+      }, 3500);
+    }
+  }, [gameStarted]);
 
   const handlePlayBtnClick = () => {
     playing ? setPlaying(false) : setPlaying(true);
@@ -47,16 +62,35 @@ export default function PlayPage({
     }
   }, []);
 
+  const handleStartBtn = () => {
+    setGameStarted(true);
+  };
+
+  if (!gameStarted) {
+    return (
+      <div className="play__start-option">
+        <div className="play__start-title">Press 'Spacebar' to START</div>
+        <p className="play__start-info">Capo:</p>
+        <p className="play__start-info">Tuning:</p>
+        <p className="play__start-info">First chord:</p>
+
+        <button onClick={handleStartBtn}>START</button>
+      </div>
+    );
+  }
+
   return (
     <main className="play">
       <div>
-        <audio ref={audioRef} controls autoPlay className="play__audio">
-          <source
-            src={`../../../audio/${selectedSong.name}.m4a`}
-            type="audio/mp4"
-          />
-          Your browser does not support the audio element.
-        </audio>
+        {audioStarted && (
+          <audio ref={audioRef} controls autoPlay className="play__audio">
+            <source
+              src={`../../../audio/${selectedSong.name}.m4a`}
+              type="audio/mp4"
+            />
+            Your browser does not support the audio element.
+          </audio>
+        )}
       </div>
       <div className="play__fretboard-container">
         <button className="play__btn" onClick={handlePlayBtnClick}>
@@ -69,7 +103,11 @@ export default function PlayPage({
           chordIndex={chordIndex}
           setChordIndex={setChordIndex}
           setCurrentSection={setCurrentSection}
+          selectedSong={selectedSong}
         />
+        {/* <div className="play__modal-container">
+          <button className="play__modal" onClick={()=> handleModalBtnClick()}>Show All Chords</button>
+        </div> */}
       </div>
       <div className="play__wrapper">
         <div className="play__lyrics-container">

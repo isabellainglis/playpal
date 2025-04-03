@@ -2,22 +2,11 @@ import SongDifficulty from "../SongDifficulty/SongDifficulty";
 import "./SongLibCard.scss";
 import { Link } from "react-router-dom";
 
-export default function SongLibCard({ song, handleSongSelection }) {
-  const displaySongChords = () => {
-    const chords = song.chords;
-    const chordsArr = chords.split(", ");
-
-    let uniqueChords = [...new Set(chordsArr)];
-
-    return uniqueChords.map((chord) => {
-      return (
-        <div className="song-card__chord" key={chord.id}>
-          {chord}
-        </div>
-      );
-    });
-  };
-
+export default function SongLibCard({
+  song,
+  handleSongSelection,
+  displaySongChords,
+}) {
   return (
     <div className="song-card" onClick={() => handleSongSelection(song)}>
       <div className="song-card__difficulty">
@@ -42,7 +31,7 @@ export default function SongLibCard({ song, handleSongSelection }) {
       <div className="song-card__capo">
         {song.capo === 0 ? "No capo" : `Capo: ${song.capo}th fret`}
       </div>
-      <div className="song-card__chords">{displaySongChords()}</div>
+      <div className="song-card__chords">{displaySongChords(song)}</div>
       <Link to="/play">
         <button>play</button>
       </Link>

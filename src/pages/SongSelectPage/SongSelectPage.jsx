@@ -6,6 +6,7 @@ export default function SongSelectPage({
   songs,
   selectedSong,
   handleSongSelection,
+  displaySongChords,
 }) {
   if (!songs) {
     return <p>Loading...</p>;
@@ -29,7 +30,10 @@ export default function SongSelectPage({
           })}
         </div>
       </section>
-      <SongDetailsCard selectedSong={selectedSong} />
+      <SongDetailsCard
+        selectedSong={selectedSong}
+        displaySongChords={displaySongChords}
+      />
     </main>
   );
 }

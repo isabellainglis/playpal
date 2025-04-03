@@ -5,8 +5,8 @@ export default function SectionLyrics({ singleLyric, index, chordIndex }) {
   return (
     <span key={uuidv4()} className="section-lyrics">
       <span
-        className={`section-lyrics__lyric ${chordIndex > index ? "" : ""} ${
-          index === chordIndex ? "section-lyrics__lyric--highlight" : ""
+        className={`section-lyrics__lyric ${chordIndex - 1 > index ? "" : ""} ${
+          index === chordIndex - 1 ? "section-lyrics__lyric--highlight" : ""
         }`}
       >
         {" "}
@@ -15,9 +15,9 @@ export default function SectionLyrics({ singleLyric, index, chordIndex }) {
       {singleLyric.lyrics === "" ? (
         <span
           className={`section-lyrics__chord section-lyrics__chord--alt ${
-            chordIndex > index ? "" : ""
+            chordIndex - 1 > index ? "" : ""
           } ${
-            index === chordIndex
+            index === chordIndex - 1
               ? "section-lyrics__chord--highlight section-lyrics__chord--alt"
               : ""
           }`}
@@ -26,8 +26,10 @@ export default function SectionLyrics({ singleLyric, index, chordIndex }) {
         </span>
       ) : (
         <span
-          className={` ${chordIndex > index ? "" : "section-lyrics__chord"} ${
-            index === chordIndex ? "section-lyrics__chord--highlight" : ""
+          className={` ${
+            chordIndex - 1 > index ? "" : "section-lyrics__chord"
+          } ${
+            index === chordIndex - 1 ? "section-lyrics__chord--highlight" : ""
           }`}
         >
           {singleLyric.name}

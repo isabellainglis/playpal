@@ -1,4 +1,3 @@
-import axios from "axios";
 import "./ChordLibrary.scss";
 import { useEffect, useState } from "react";
 import Chord from "../../components/Chord/Chord";
@@ -8,7 +7,7 @@ import { fetchAllChords } from "../../utils/apiCalls";
 export default function ChordLibrary({
   handleSongSelection,
   songs,
-  selectedSong,
+  displaySongChords,
 }) {
   const [chordLib, setChordLib] = useState(null);
   const [selectedChord, setSelectedChord] = useState(null);
@@ -94,6 +93,7 @@ export default function ChordLibrary({
                 <SongLibCard
                   song={song}
                   handleSongSelection={handleSongSelection}
+                  displaySongChords={displaySongChords}
                 />
               </div>
             );

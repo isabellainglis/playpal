@@ -18,6 +18,20 @@ function App() {
   const [selectedSongChords, setSelectedSongChords] = useState(null);
   const [songSections, setSongSections] = useState(null);
 
+  const displaySongChords = (song) => {
+    const chords = song.chords;
+    const chordsArr = chords.split(", ");
+
+    let uniqueChords = [...new Set(chordsArr)];
+    return uniqueChords.map((chord) => {
+      return (
+        <div className="song-card__chord" key={chord}>
+          {chord}
+        </div>
+      );
+    });
+  };
+
   const handleSongSelection = async (song) => {
     setSelectedSong(song);
     fetchSongDetails(song);
@@ -72,6 +86,7 @@ function App() {
               songs={songs}
               selectedSong={selectedSong}
               handleSongSelection={handleSongSelection}
+              displaySongChords={displaySongChords}
             />
           }
         />
@@ -79,10 +94,10 @@ function App() {
           path="/play"
           element={
             <PlayPage
-              songs={songs}
               selectedSong={selectedSong}
               selectedSongChords={selectedSongChords}
               songSections={songSections}
+              displaySongChords={displaySongChords}
             />
           }
         />
@@ -91,8 +106,8 @@ function App() {
           element={
             <ChordLibrary
               songs={songs}
-              selectedSong={selectedSong}
               handleSongSelection={handleSongSelection}
+              displaySongChords={displaySongChords}
             />
           }
         />

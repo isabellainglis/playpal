@@ -32,6 +32,11 @@
     border-radius: 10px;
     box-shadow: 2px 10px 10px 0px black;
     display: flex;
+
+    &--first {
+      // display: none;
+      background-color: blue;
+    }
   }
 
   &__circle-chord {
@@ -49,6 +54,5 @@
     z-index: 100;
     width: 300px;
     margin: 0 auto;
-    // height: 20px;
   }
 }

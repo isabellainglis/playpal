@@ -30,6 +30,10 @@ export default function StrumPattern({
   };
 
   const fetchStrumPattern = () => {
+    if (chordIndex === selectedSongChords.length) {
+      return;
+    }
+
     const currentStrumPattern = selectedSongChords[chordIndex].strum_pattern;
 
     if (!currentStrumPattern) {
