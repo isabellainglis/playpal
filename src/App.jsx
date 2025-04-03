@@ -5,12 +5,13 @@ import HomePage from "./pages/HomePage/HomePage";
 import SongSelectPage from "./pages/SongSelectPage/SongSelectPage";
 import PlayPage from "./pages/PlayPage/PlayPage";
 import { useEffect, useState } from "react";
-import ChordLibrary from "./pages/ChordLibrary/ChordLibrary";
+import LibraryPage from "./pages/LibraryPage/LibraryPage";
 import {
   fetchAllSongs,
   fetchSingleSongDetails,
   fetchSingleSongLyrics,
 } from "./utils/apiCalls";
+import InstructionsPage from "./pages/InstructionsPage/InstructionsPage";
 
 function App() {
   const [songs, setSongs] = useState(null);
@@ -104,13 +105,14 @@ function App() {
         <Route
           path="/chord-library"
           element={
-            <ChordLibrary
+            <LibraryPage
               songs={songs}
               handleSongSelection={handleSongSelection}
               displaySongChords={displaySongChords}
             />
           }
         />
+        <Route path="/how-to-play" element={<InstructionsPage />} />
       </Routes>
     </BrowserRouter>
   );

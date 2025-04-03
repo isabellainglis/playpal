@@ -1,10 +1,10 @@
-import "./ChordLibrary.scss";
+import "./LibraryPage.scss";
 import { useEffect, useState } from "react";
 import Chord from "../../components/Chord/Chord";
 import SongLibCard from "../../components/SongLibCard/SongLibCard";
 import { fetchAllChords } from "../../utils/apiCalls";
 
-export default function ChordLibrary({
+export default function LibraryPage({
   handleSongSelection,
   songs,
   displaySongChords,

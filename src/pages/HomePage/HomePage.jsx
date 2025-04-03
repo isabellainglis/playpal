@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./HomePage.scss";
+import githubIcon from "../../../public/icons/github.png";
+import linkedinIcon from "../../../public/icons/linkedin.webp";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -17,7 +19,12 @@ export default function HomePage() {
           >
             PLAY
           </button>
-          <button className="homepage__btn">HOW TO PLAY</button>
+          <button
+            className="homepage__btn"
+            onClick={() => navigate("/how-to-play")}
+          >
+            HOW TO PLAY
+          </button>
           <button
             className="homepage__btn"
             onClick={() => navigate("/chord-library")}
@@ -26,6 +33,22 @@ export default function HomePage() {
           </button>
           <button className="homepage__btn">REQUEST NEW SONG</button>
         </div>
+      </div>
+      <div className="homepage__links">
+        <a href="https://github.com/isabellainglis" target="_blank">
+          <img
+            className="homepage__icon homepage__icon--github"
+            src={githubIcon}
+            alt="github icon"
+          />
+        </a>
+        <a href="https://www.linkedin.com/in/isabellainglis/" target="_blank">
+          <img
+            className="homepage__icon"
+            src={linkedinIcon}
+            alt="linkedin icon"
+          />
+        </a>
       </div>
     </section>
   );

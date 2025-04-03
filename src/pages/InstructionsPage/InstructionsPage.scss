@@ -1,0 +1,10 @@
+.instructions {
+  margin: 0 auto;
+  width: 60vw;
+  text-align: center;
+
+  &__info {
+    list-style: circle;
+    margin-bottom: 1rem;
+  }
+}
