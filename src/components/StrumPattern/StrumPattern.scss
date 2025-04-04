@@ -1,20 +1,35 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .strum-pattern {
   display: flex;
   flex-direction: row;
 
-  &__bar {
-    // margin-left: 5rem;
+  @include desktop {
+    justify-content: center;
   }
 
   &__wrapper {
-    margin-right: 2rem;
+    margin: 0 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     animation: fade 2s fade-in;
+
+    @include tablet-and-above {
+      margin-left: 0;
+    }
+
+    @include desktop {
+      margin: 0 2rem;
+    }
   }
 
   &__arrow {
-    width: 3rem;
+    width: 2rem;
+
+    @include tablet-and-above {
+      width: 3rem;
+    }
   }
 }

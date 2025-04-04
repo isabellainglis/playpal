@@ -6,7 +6,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: Roboto;
+  font-family: inconsolata;
 }
 
 body {
@@ -24,8 +24,8 @@ button {
 
 button,
 p {
-  font-size: 11px;
+  font-size: 1rem;
   @include tablet-and-above {
-    font-size: 12px;
+    font-size: 1.2rem;
   }
 }

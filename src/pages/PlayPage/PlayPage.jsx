@@ -3,6 +3,7 @@ import "./PlayPage.scss";
 import Fretboard from "../../components/Fretboard/Fretboard";
 import LyricsDisplay from "../../components/LyricsDisplay/LyricsDisplay";
 import StrumPattern from "../../components/StrumPattern/StrumPattern";
+import background from "../../assets/images/stage.jpg";
 
 export default function PlayPage({
   selectedSong,
@@ -87,6 +88,11 @@ export default function PlayPage({
 
   return (
     <main className="play">
+      <img
+        className="song-select__bg"
+        src={background}
+        alt="backstage of a music show"
+      />
       <div>
         {audioStarted && (
           <audio ref={audioRef} controls autoPlay className="play__audio">

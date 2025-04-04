@@ -32,16 +32,14 @@ export default function SongDetailsCard({ selectedSong, displaySongChords }) {
               </div>
             </div>
             <div className="song-details__detail-wrapper--three">
-              <div className="song-details__song-info song-details__song-info">
-                {selectedSong.name}
-              </div>
-              <div className="song-details__song-info song-details__song-info">
+              <div className="song-details__song-info">{selectedSong.name}</div>
+              <div className="song-details__song-info song-details__song-info--artist">
                 {selectedSong.artist}
               </div>
               <div className="song-details__chords">
                 {displaySongChords(selectedSong)}
               </div>
-              <Link to="/play">
+              <Link className="song-details__play-link" to="/play">
                 <button className="song-details__btn">PLAY</button>
               </Link>
             </div>

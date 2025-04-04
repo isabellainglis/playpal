@@ -2,22 +2,20 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-  background-color: $secondary-color;
   padding: 0.5rem;
-  margin: 0;
-
-  &__title {
-    font-size: 1.75rem;
-    margin: 0;
-    color: white;
-
-    @include tablet-and-above {
-      text-align: center;
-      font-size: 40px;
-    }
-  }
+  margin-bottom: 1rem;
 
   &__link {
+    position: absolute;
+    right: 0;
     text-decoration: none;
+    display: flex;
+    justify-content: end;
+    margin: 1rem 2rem 0;
+  }
+
+  &__logo {
+    width: 13rem;
+    z-index: 0;
   }
 }

@@ -20,7 +20,7 @@
 
   &__wrapper {
     text-align: left;
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +38,8 @@
     }
 
     &--artist {
-      // margin: 0.25rem 0.75rem;
+      color: rgb(222, 145, 3);
+      font-size: 1.2rem;
     }
   }
 }

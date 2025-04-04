@@ -9,11 +9,11 @@ export default function LyricsDisplay({
 }) {
   return (
     <div className="lyrics">
-      <div className="lyrics__section">{section}</div>
+      <div className="lyrics__section-title">{section}</div>
       <div className="lyrics__container">
         {selectedSongChords.map((singleLyric, index) => {
           return (
-            <div key={index}>
+            <div className="lyrics__section-lyrics" key={index}>
               {sectionId === singleLyric.section_id ? (
                 <SectionLyrics
                   singleLyric={singleLyric}

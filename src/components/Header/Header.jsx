@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import "./Header.scss";
+import logo from "../../assets/images/logo55.png";
 
 export default function Header() {
   return (
     <header className="header">
       <Link className="header__link" to="/">
-        <h1 className="header__title">PlayPal</h1>
+        <img className="header__logo" src={logo} alt="" />
       </Link>
     </header>
   );

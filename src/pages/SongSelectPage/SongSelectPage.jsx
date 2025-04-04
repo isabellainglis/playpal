@@ -20,7 +20,11 @@ export default function SongSelectPage({
         src={background}
         alt="backstage of a music show"
       />
-      <section className="song-select__select-container">
+      <section
+        className={`song-select__select-container ${
+          !selectedSong ? "song-select__select-container--unselected" : ""
+        }`}
+      >
         <div className="song-select__content">
           <h1 className="song-select__title">SETLIST</h1>
           <div className="song-select__songs-wrapper">
@@ -63,6 +67,7 @@ export default function SongSelectPage({
           </div>
         </div>
       </section>
+
       <SongDetailsCard
         selectedSong={selectedSong}
         displaySongChords={displaySongChords}
