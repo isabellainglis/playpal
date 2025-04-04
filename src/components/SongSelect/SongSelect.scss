@@ -7,13 +7,15 @@
     border: 1px solid $tertiary-color;
     border-radius: 10px;
     margin: 0.5rem;
-    padding: 0.75rem;
-    background-color: rgba(71, 69, 69, 0.557);
+    padding: 0.3rem;
+    background-color: rgba(105, 146, 167, 0.311);
     color: white;
+    border: 5px solid rgba(53, 75, 86, 0.311);
   }
 
   &__wrapper {
-    text-align: center;
+    text-align: left;
+    font-size: 1.15rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,7 +35,7 @@
     }
 
     &--artist {
-      margin: 0.25rem 0.75rem;
+      // margin: 0.25rem 0.75rem;
     }
   }
 }

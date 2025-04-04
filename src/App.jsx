@@ -18,6 +18,7 @@ function App() {
   const [selectedSong, setSelectedSong] = useState(null);
   const [selectedSongChords, setSelectedSongChords] = useState(null);
   const [songSections, setSongSections] = useState(null);
+  const [gameStarted, setGameStarted] = useState(false);
 
   const displaySongChords = (song) => {
     const chords = song.chords;
@@ -81,7 +82,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
-          path="/songselection"
+          path="/song-selection"
           element={
             <SongSelectPage
               songs={songs}
@@ -99,6 +100,7 @@ function App() {
               selectedSongChords={selectedSongChords}
               songSections={songSections}
               displaySongChords={displaySongChords}
+              gameStarted={gameStarted}
             />
           }
         />

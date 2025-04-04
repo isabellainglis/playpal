@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./HomePage.scss";
-import githubIcon from "../../../public/icons/github.png";
-import linkedinIcon from "../../../public/icons/linkedin.webp";
+import githubIcon from "../../assets/icons/github.png";
+import linkedinIcon from "../../assets/icons/linkedin.webp";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ export default function HomePage() {
         <div className="homepage__btn-wrapper">
           <button
             className="homepage__btn"
-            onClick={() => navigate("/songselection")}
+            onClick={() => navigate("/song-selection")}
           >
             PLAY
           </button>
@@ -31,7 +31,7 @@ export default function HomePage() {
           >
             LIBRARY
           </button>
-          <button className="homepage__btn">REQUEST NEW SONG</button>
+          {/* <button className="homepage__btn">REQUEST NEW SONG</button> */}
         </div>
       </div>
       <div className="homepage__links">

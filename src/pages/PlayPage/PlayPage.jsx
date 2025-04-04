@@ -38,18 +38,6 @@ export default function PlayPage({
     }
   };
 
-  useEffect(() => {
-    if (selectedSong.name === "The Only Exception") {
-      setTimeout(() => {
-        setAudioStarted(true);
-      }, 4700);
-    } else if (selectedSong.name === "Learn To Fly") {
-      setTimeout(() => {
-        setAudioStarted(true);
-      }, 3500);
-    }
-  }, [gameStarted]);
-
   const handlePlayBtnClick = () => {
     playing ? setPlaying(false) : setPlaying(true);
   };
@@ -69,14 +57,32 @@ export default function PlayPage({
   if (!gameStarted) {
     return (
       <div className="play__start-option">
-        <div className="play__start-title">Press 'Spacebar' to START</div>
-        <p className="play__start-info">Capo:</p>
-        <p className="play__start-info">Tuning:</p>
-        <p className="play__start-info">First chord:</p>
+        {/* <div className="play__start-title">Press 'Spacebar' to START</div> */}
+        <p className="play__start-info">
+          {selectedSong.capo === 0
+            ? "Capo: Not required"
+            : `Capo: ${selectedSong.capo}`}
+        </p>
+        <p className="play__start-info">Tuning: {selectedSong.tuning}</p>
+        <p className="play__start-info">
+          First chord: {selectedSong.chords[0]}
+        </p>
 
-        <button onClick={handleStartBtn}>START</button>
+        <button className="play__start-btn" onClick={handleStartBtn}>
+          START
+        </button>
       </div>
     );
+  } else {
+    if (selectedSong.name === "The Only Exception") {
+      setTimeout(() => {
+        setAudioStarted(true);
+      }, 4000);
+    } else if (selectedSong.name === "Learn To Fly") {
+      setTimeout(() => {
+        setAudioStarted(true);
+      }, 2600);
+    }
   }
 
   return (
@@ -93,9 +99,9 @@ export default function PlayPage({
         )}
       </div>
       <div className="play__fretboard-container">
-        <button className="play__btn" onClick={handlePlayBtnClick}>
+        {/* <button className="play__btn" onClick={handlePlayBtnClick}>
           {playing ? "Pause" : "Play"}
-        </button>
+        </button> */}
         <Fretboard
           playing={playing}
           setPlaying={setPlaying}

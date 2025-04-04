@@ -22,30 +22,50 @@
     height: 60vh;
     margin: 2rem 2rem 1rem;
     border-radius: 10px;
-    background-color: rgba(71, 69, 69, 0.557);
+    background-color: rgba(18, 19, 19, 0.249);
+    border: rgba(0, 0, 0, 0.284) 5px solid;
 
     @include tablet-and-above {
       width: 50%;
     }
   }
 
-  &__header-wrapper {
+  &__title-wrapper {
     border: 1px grey solid;
-    width: 8rem;
+    width: 20rem;
     text-align: center;
     border-radius: 10px;
     margin: 0 auto;
     position: relative;
     bottom: 1.5rem;
-    background-color: white;
+    background-color: rgba(82, 118, 132, 0.428);
   }
 
-  &__header {
+  &__title {
     margin: 0.5rem;
+
+    font-size: 3.5rem;
+    color: grey;
   }
 
   &__songs-wrapper {
     height: 89%;
     overflow-y: scroll;
+  }
+
+  &__bg {
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    // @include desktop {
+    //   left: 50%;
+    //   margin-left: -512px; /* 50% */
+    // }
   }
 }
