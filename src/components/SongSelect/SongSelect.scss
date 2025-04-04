@@ -2,15 +2,20 @@
 @use "../../styles/partials/mixins" as *;
 
 .song {
+  margin: 0.5rem;
+  margin-top: 0;
+  padding: 0.3rem;
+  color: black;
+
   &__container {
     display: flex;
-    border: 1px solid $tertiary-color;
-    border-radius: 10px;
-    margin: 0.5rem;
-    padding: 0.3rem;
-    background-color: rgba(105, 146, 167, 0.311);
-    color: white;
-    border: 5px solid rgba(53, 75, 86, 0.311);
+    border-radius: 5px;
+    padding: 0.5rem 0.2rem 0.5rem 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(204, 201, 201, 0.485);
+    }
   }
 
   &__wrapper {
@@ -21,17 +26,15 @@
     justify-content: center;
 
     &--left {
-      width: 80%;
+      width: 85%;
     }
   }
 
   &__info {
-    border: 1px solid $tertiary-color;
-    border-radius: 7px;
-    margin: 0.25rem;
+    margin: 0;
 
     &--name {
-      height: 2rem;
+      height: 1.5rem;
     }
 
     &--artist {

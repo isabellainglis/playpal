@@ -1,7 +1,7 @@
 import "./SongSelectPage.scss";
 import SongSelect from "../../components/SongSelect/SongSelect";
 import SongDetailsCard from "../../components/SongDetailsCard/SongDetailsCard";
-import background from "../../assets/images/backstage2.jpg";
+import background from "../../assets/images/backstage.jpg";
 
 export default function SongSelectPage({
   songs,
@@ -21,19 +21,46 @@ export default function SongSelectPage({
         alt="backstage of a music show"
       />
       <section className="song-select__select-container">
-        <div className="song-select__title-wrapper">
-          <h1 className="song-select__title">SONGS</h1>
-        </div>
-        <div className="song-select__songs-wrapper">
-          {songs.map((song) => {
-            return (
-              <SongSelect
-                handleSongSelection={handleSongSelection}
-                key={song.id}
-                song={song}
-              />
-            );
-          })}
+        <div className="song-select__content">
+          <h1 className="song-select__title">SETLIST</h1>
+          <div className="song-select__songs-wrapper">
+            {songs.map((song) => {
+              return (
+                <SongSelect
+                  handleSongSelection={handleSongSelection}
+                  key={song.id}
+                  song={song}
+                />
+              );
+            })}
+            {songs.map((song) => {
+              return (
+                <SongSelect
+                  handleSongSelection={handleSongSelection}
+                  key={song.id}
+                  song={song}
+                />
+              );
+            })}
+            {songs.map((song) => {
+              return (
+                <SongSelect
+                  handleSongSelection={handleSongSelection}
+                  key={song.id}
+                  song={song}
+                />
+              );
+            })}
+            {songs.map((song) => {
+              return (
+                <SongSelect
+                  handleSongSelection={handleSongSelection}
+                  key={song.id}
+                  song={song}
+                />
+              );
+            })}
+          </div>
         </div>
       </section>
       <SongDetailsCard
