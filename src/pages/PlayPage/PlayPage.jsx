@@ -20,7 +20,7 @@ export default function PlayPage({
   const [audioStarted, setAudioStarted] = useState(false);
 
   if (!selectedSongChords) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
   const setCurrentSection = (sectionId) => {
@@ -75,15 +75,9 @@ export default function PlayPage({
       </div>
     );
   } else {
-    if (selectedSong.name === "The Only Exception") {
-      setTimeout(() => {
-        setAudioStarted(true);
-      }, 4000);
-    } else if (selectedSong.name === "Learn To Fly") {
-      setTimeout(() => {
-        setAudioStarted(true);
-      }, 2600);
-    }
+    setTimeout(() => {
+      setAudioStarted(true);
+    }, selectedSong.delay);
   }
 
   return (
@@ -104,6 +98,16 @@ export default function PlayPage({
           </audio>
         )}
       </div>
+      {chordIndex === selectedSongChords.length && (
+        <div className="play__pop-up">
+          <div className="play__pop-up-options">
+            <h2 className="play__pop-up-title">Great job!</h2>
+            <p className="play__pop-up-text">Go again?</p>
+            <p className="play__pop-up-text">Choose a different song</p>
+            <p className="play__pop-up-text">Back to main menu</p>
+          </div>
+        </div>
+      )}
       <div className="play__fretboard-container">
         {/* <button className="play__btn" onClick={handlePlayBtnClick}>
           {playing ? "Pause" : "Play"}

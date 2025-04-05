@@ -18,6 +18,12 @@ export default function StrumPattern({
     }
 
     if (chordIndex < selectedSongChords.length) {
+      if (str.length === 1) {
+        setStrumOne([str]);
+        setStrumTwo(null);
+        return;
+      }
+
       const bar = str.split(" ");
       setBars(bar);
 
@@ -75,25 +81,26 @@ export default function StrumPattern({
         })}
       </div>
       <div className="strum-pattern__wrapper">
-        {strumTwo.map((strum) => {
-          return (
-            <div key={uuidv4()} className="strum-pattern__individual-wrapper">
-              {strum === "D" ? (
-                <img
-                  className="strum-pattern__arrow"
-                  src="../../../icons/down.webp"
-                  alt="down arrow"
-                />
-              ) : (
-                <img
-                  className="strum-pattern__arrow"
-                  src="../../../icons/up.webp"
-                  alt="up arrow"
-                />
-              )}
-            </div>
-          );
-        })}
+        {strumTwo &&
+          strumTwo.map((strum) => {
+            return (
+              <div key={uuidv4()} className="strum-pattern__individual-wrapper">
+                {strum === "D" ? (
+                  <img
+                    className="strum-pattern__arrow"
+                    src="../../../icons/down.webp"
+                    alt="down arrow"
+                  />
+                ) : (
+                  <img
+                    className="strum-pattern__arrow"
+                    src="../../../icons/up.webp"
+                    alt="up arrow"
+                  />
+                )}
+              </div>
+            );
+          })}
       </div>
       <div className="background"></div>
       {/* <span className="strum-pattern__bar">{bars[0]}</span>

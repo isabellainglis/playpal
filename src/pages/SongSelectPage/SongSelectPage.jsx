@@ -10,7 +10,7 @@ export default function SongSelectPage({
   displaySongChords,
 }) {
   if (!songs) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
   return (
