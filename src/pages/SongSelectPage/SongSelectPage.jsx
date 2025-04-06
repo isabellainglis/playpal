@@ -2,6 +2,7 @@ import "./SongSelectPage.scss";
 import SongSelect from "../../components/SongSelect/SongSelect";
 import SongDetailsCard from "../../components/SongDetailsCard/SongDetailsCard";
 import background from "../../assets/images/backstage.jpg";
+import { useEffect } from "react";
 
 export default function SongSelectPage({
   songs,
@@ -10,11 +11,13 @@ export default function SongSelectPage({
   displaySongChords,
   setCurrentPage,
 }) {
-  setCurrentPage("song-selection");
-
   if (!songs) {
     return <p className="loading">Loading...</p>;
   }
+
+  useEffect(() => {
+    setCurrentPage("song-selection");
+  }, []);
 
   return (
     <main className="song-select">

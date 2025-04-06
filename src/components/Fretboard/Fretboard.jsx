@@ -4,12 +4,10 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Fretboard({
   playing,
-  setPlaying,
   selectedSongChords,
   chordIndex,
   setChordIndex,
   setCurrentSection,
-  selectedSong,
 }) {
   const [circles, setCircles] = useState([]);
   const [circleIdCounter, setCircleIdCounter] = useState(1);
@@ -19,7 +17,7 @@ export default function Fretboard({
   const displayEachChord = () => {
     if (playing && chordIndex < selectedSongChords.length) {
       const chord = selectedSongChords[chordIndex];
-      const duration = chord.duration * 1000;
+      const chordDuration = chord.duration * 1000;
 
       setSection(chord.section_id);
       if (!chord.name) {
@@ -28,11 +26,9 @@ export default function Fretboard({
         setCurrentSection(chord.section_id);
       }
 
-      let position = 0;
-
       const newCircle = {
         id: circleIdCounter,
-        position: position,
+        position: 0,
         chord: chord.name,
       };
 
@@ -41,7 +37,7 @@ export default function Fretboard({
 
       let timer = setTimeout(() => {
         setChordIndex(chordIndex + 1);
-      }, duration);
+      }, chordDuration);
 
       return () => clearTimeout(timer);
     }
@@ -52,29 +48,36 @@ export default function Fretboard({
   }, [chordIndex, selectedSongChords, playing]);
 
   const moveCircles = () => {
-    if (playing) {
-      const moveInterval = setInterval(() => {
-        if (selectedSong.name === "The Only Exception") {
-          setCircles((prevCircles) =>
-            prevCircles
-              .map((circle) => ({ ...circle, position: circle.position + 2.5 }))
-              .filter((circle) => circle.position < 550)
-          );
-        } else {
-          setCircles((prevCircles) =>
-            prevCircles
-              .map((circle) => ({ ...circle, position: circle.position + 2 }))
-              .filter((circle) => circle.position < 550)
-          );
-        }
-      }, 16);
-      return () => clearInterval(moveInterval);
-    }
+    let animationFrameId;
+
+    const animate = () => {
+      if (playing) {
+        const currentChord = selectedSongChords[chordIndex];
+        const chordDuration = currentChord ? currentChord.duration : 1;
+        const speedFactor = 550 / (chordDuration * 1000);
+
+        setCircles((prevCircles) =>
+          prevCircles
+            .map((circle) => ({
+              ...circle,
+              position: circle.position + speedFactor * 16,
+            }))
+            .filter((circle) => circle.position < 550)
+        );
+
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    };
+
+    animate();
+
+    return () => cancelAnimationFrame(animationFrameId);
   };
 
   useEffect(() => {
-    moveCircles();
-  }, [playing]);
+    const cleanup = moveCircles();
+    return cleanup;
+  }, [playing, chordIndex, selectedSongChords]);
 
   return (
     <div className="fretboard" id="content">
@@ -93,7 +96,7 @@ export default function Fretboard({
 
         {circles.map((circle) => (
           <div
-            key={uuidv4()}
+            key={circleIdCounter}
             className={`fretboard__circle ${
               circleIdCounter === 2 ? "fretboard__circle--first" : ""
             }`}
