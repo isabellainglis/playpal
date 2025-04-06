@@ -1,7 +1,24 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .instructions {
-  margin: 0 auto;
-  width: 40vw;
+  @include page-content-container;
   text-align: center;
+  color: white;
+
+  &__poster-dots-wrapper {
+    @include poster-dots-wrapper;
+  }
+
+  &__info-container {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__info {
     list-style: circle;

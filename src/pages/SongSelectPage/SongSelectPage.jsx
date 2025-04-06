@@ -43,33 +43,6 @@ export default function SongSelectPage({
                 />
               );
             })}
-            {songs.map((song) => {
-              return (
-                <SongSelect
-                  handleSongSelection={handleSongSelection}
-                  key={song.id}
-                  song={song}
-                />
-              );
-            })}
-            {songs.map((song) => {
-              return (
-                <SongSelect
-                  handleSongSelection={handleSongSelection}
-                  key={song.id}
-                  song={song}
-                />
-              );
-            })}
-            {songs.map((song) => {
-              return (
-                <SongSelect
-                  handleSongSelection={handleSongSelection}
-                  key={song.id}
-                  song={song}
-                />
-              );
-            })}
           </div>
         </div>
       </section>

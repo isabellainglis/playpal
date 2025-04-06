@@ -13,33 +13,37 @@ export default function Fretboard({
   const [circleIdCounter, setCircleIdCounter] = useState(1);
   const triggerLine = useRef(null);
   const [section, setSection] = useState(null);
+  const [lastRenderedChordIndex, setLastRenderedChordIndex] = useState(-1);
 
   const displayEachChord = () => {
     if (playing && chordIndex < selectedSongChords.length) {
-      const chord = selectedSongChords[chordIndex];
-      const chordDuration = chord.duration * 1000;
+      if (chordIndex !== lastRenderedChordIndex) {
+        const currentChord = selectedSongChords[chordIndex];
+        const chordDuration = currentChord.duration * 1000;
 
-      setSection(chord.section_id);
-      if (!chord.name) {
-        setCurrentSection(1);
-      } else {
-        setCurrentSection(chord.section_id);
+        setSection(currentChord.section_id);
+        if (!currentChord.name) {
+          setCurrentSection(1);
+        } else {
+          setCurrentSection(currentChord.section_id);
+        }
+
+        const newCircle = {
+          id: circleIdCounter,
+          position: 0,
+          chord: currentChord.name,
+        };
+
+        setCircles((prevCircles) => [...prevCircles, newCircle]);
+        setCircleIdCounter(circleIdCounter + 1);
+        setLastRenderedChordIndex(chordIndex);
+
+        let timer = setTimeout(() => {
+          setChordIndex(chordIndex + 1);
+        }, chordDuration);
+
+        return () => clearTimeout(timer);
       }
-
-      const newCircle = {
-        id: circleIdCounter,
-        position: 0,
-        chord: chord.name,
-      };
-
-      setCircles((prevCircles) => [...prevCircles, newCircle]);
-      setCircleIdCounter(circleIdCounter + 1);
-
-      let timer = setTimeout(() => {
-        setChordIndex(chordIndex + 1);
-      }, chordDuration);
-
-      return () => clearTimeout(timer);
     }
   };
 
@@ -96,7 +100,7 @@ export default function Fretboard({
 
         {circles.map((circle) => (
           <div
-            key={circleIdCounter}
+            key={uuidv4()}
             className={`fretboard__circle ${
               circleIdCounter === 2 ? "fretboard__circle--first" : ""
             }`}

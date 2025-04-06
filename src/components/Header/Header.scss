@@ -9,12 +9,14 @@
   align-items: center;
 
   &__link {
-    position: absolute;
-    left: 0;
-    text-decoration: none;
-    display: flex;
-    justify-content: start;
-    margin: 2rem 1rem 0;
+    margin: 0 auto;
+    @include tablet-and-above {
+      position: absolute;
+      left: 0;
+      display: flex;
+      justify-content: start;
+      margin: 2rem 1rem 0;
+    }
   }
 
   &__logo {
@@ -23,8 +25,12 @@
   }
 
   &__list {
-    display: flex;
-    margin-right: 1rem;
+    display: none;
+
+    @include tablet-and-above {
+      display: flex;
+      margin-right: 1rem;
+    }
   }
 
   &__list-item {

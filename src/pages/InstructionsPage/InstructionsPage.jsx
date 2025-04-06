@@ -1,16 +1,24 @@
+import { useEffect } from "react";
 import "./InstructionsPage.scss";
 
 export default function InstructionsPage({ setCurrentPage }) {
-  setCurrentPage("instructions");
+  useEffect(() => {
+    setCurrentPage("instructions");
+  }, []);
 
   return (
     <div className="instructions">
+      <div className="instructions__poster-dots-wrapper">
+        <div className="instructions__poster-dots">●</div>
+        <div className="instructions__poster-dots">●</div>
+      </div>
       <h1 className="instructions__title">Instructions</h1>
       <div className="instructions__info-container">
         <ul className="instructions__info-list">
           <li className="instructions__info">
-            Select a song from the Songs page. By clicking on a song, you can
-            see details on tuning, tempo and if a capo is required.
+            To play, you first need to select a song from the Song Selection
+            page. By clicking on a song, you can see details on tuning, tempo
+            and if a capo is required.
           </li>
           <li className="instructions__info">
             Once you have selected your song and clicked the 'Play' button, you
@@ -23,7 +31,7 @@ export default function InstructionsPage({ setCurrentPage }) {
           </li>
           <li className="instructions__info">
             Check out the library to see diagrams of individual chords and
-            filter by songs that contain specific chords
+            filter by songs that contain specific chords.
           </li>
         </ul>
         <p className="instructions__info"></p>

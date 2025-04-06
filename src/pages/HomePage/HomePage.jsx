@@ -2,16 +2,21 @@ import { useNavigate } from "react-router-dom";
 import "./HomePage.scss";
 import githubIcon from "../../assets/icons/github.png";
 import linkedinIcon from "../../assets/icons/linkedin.webp";
+import { useEffect } from "react";
 
 export default function HomePage({ setCurrentPage }) {
   const navigate = useNavigate();
-  setCurrentPage("homepage");
+
+  useEffect(() => {
+    setCurrentPage("homepage");
+  }, []);
 
   return (
     <section className="homepage">
-      <div className="homepage__container">
-        <div className="homepage__title-wrapper">
-          <h1 className="homepage__title">PLAYPAL</h1>
+      <div className="homepage__content">
+        <div className="homepage__poster-dots-wrapper">
+          <div className="homepage__poster-dots">●</div>
+          <div className="homepage__poster-dots">●</div>
         </div>
         <div className="homepage__btn-wrapper">
           <button

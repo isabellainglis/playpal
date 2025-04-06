@@ -2,36 +2,23 @@
 @use "../../styles/partials/mixins" as *;
 
 .homepage {
-  &__container {
-    background-color: $secondary-color;
-    width: 60vw;
-    height: 50vw;
-    min-height: 23rem;
-    max-height: 25rem;
-    max-width: 28.1563rem;
-    margin: 5rem auto 1rem;
-    border: grey 10px solid;
-    border-radius: 10px;
+  &__content {
+    @include page-content-container;
+    position: relative;
   }
 
-  &__title-wrapper {
-    background-color: grey;
-    width: 8rem;
-    height: 3rem;
-    text-align: center;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
+  &__poster-dots-wrapper {
+    @include poster-dots-wrapper;
+  }
+
+  &__poster-dots {
     margin-bottom: 2rem;
   }
 
   &__btn-wrapper {
     display: flex;
     flex-direction: column;
-    padding-top: 1.5rem;
+    padding-top: 2rem;
   }
 
   &__btn {
@@ -40,12 +27,13 @@
     margin: 0 auto;
     border-radius: 10px;
     border: none;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     transform: rotateY(-15deg) rotateX(25deg) skewY(-6deg);
     box-shadow: rgba(184, 180, 180, 1) 1.95px 1.95px 2.6px;
 
     @include tablet-and-above {
       font-size: 1.3rem;
+      height: 5rem;
     }
 
     &:hover {

@@ -41,7 +41,13 @@ export default function PlayPage({
   };
 
   const handlePlayBtnClick = () => {
-    playing ? setPlaying(false) : setPlaying(true);
+    if (playing) {
+      setPlaying(false);
+      audioRef.current.pause();
+    } else {
+      setPlaying(true);
+      audioRef.current.play();
+    }
   };
 
   useEffect(() => {
@@ -112,9 +118,9 @@ export default function PlayPage({
         </div>
       )}
       <div className="play__fretboard-container">
-        {/* <button className="play__btn" onClick={handlePlayBtnClick}>
+        <button className="play__btn" onClick={handlePlayBtnClick}>
           {playing ? "Pause" : "Play"}
-        </button> */}
+        </button>
         <Fretboard
           playing={playing}
           setPlaying={setPlaying}

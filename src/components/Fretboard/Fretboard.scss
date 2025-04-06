@@ -39,7 +39,6 @@
 
     &--first {
       display: none;
-      // background-color: blue;
     }
   }
 
@@ -53,10 +52,10 @@
   }
 
   &__trigger-line {
-    border-bottom: red solid 1px;
+    border-bottom: orange solid 2px;
     position: relative;
     z-index: 100;
-    width: 300px;
+    width: 250px;
     margin: 0 auto;
   }
 }

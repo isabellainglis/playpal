@@ -11,3 +11,23 @@
     @content;
   }
 }
+
+@mixin page-content-container {
+  background-color: $secondary-color;
+  width: 80vw;
+  height: 65vh;
+  min-height: 23rem;
+  max-width: 62.5rem;
+  margin: 5rem auto 1rem;
+  border: #e1dfde 10px solid;
+  border-radius: 2px;
+}
+
+@mixin poster-dots-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.1rem 0.7rem;
+  font-size: 2rem;
+  line-height: 1;
+  color: #e1dfde;
+}
