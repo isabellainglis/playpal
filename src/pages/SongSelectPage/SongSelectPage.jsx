@@ -10,6 +10,7 @@ export default function SongSelectPage({
   handleSongSelection,
   displaySongChords,
   setCurrentPage,
+  setSelectedSong,
 }) {
   if (!songs) {
     return <p className="loading">Loading...</p>;
@@ -17,6 +18,7 @@ export default function SongSelectPage({
 
   useEffect(() => {
     setCurrentPage("song-selection");
+    setSelectedSong(null);
   }, []);
 
   return (

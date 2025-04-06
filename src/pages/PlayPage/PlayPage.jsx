@@ -4,6 +4,7 @@ import Fretboard from "../../components/Fretboard/Fretboard";
 import LyricsDisplay from "../../components/LyricsDisplay/LyricsDisplay";
 import StrumPattern from "../../components/StrumPattern/StrumPattern";
 import background from "../../assets/images/stage.jpg";
+import GameFinish from "../../components/GameFinish/GameFinish";
 
 export default function PlayPage({
   selectedSong,
@@ -11,6 +12,7 @@ export default function PlayPage({
   songSections,
   displaySongChords,
   setCurrentPage,
+  setSelectedSong,
 }) {
   const [playing, setPlaying] = useState(true);
   const audioRef = useRef(null);
@@ -67,7 +69,6 @@ export default function PlayPage({
   if (!gameStarted) {
     return (
       <div className="play__start-option">
-        {/* <div className="play__start-title">Press 'Spacebar' to START</div> */}
         <p className="play__start-info">
           {selectedSong.capo === 0
             ? "Capo: Not required"
@@ -107,20 +108,11 @@ export default function PlayPage({
           </audio>
         )}
       </div>
-      {chordIndex === selectedSongChords.length && (
-        <div className="play__pop-up">
-          <div className="play__pop-up-options">
-            <h2 className="play__pop-up-title">Great job!</h2>
-            <p className="play__pop-up-text">Go again?</p>
-            <p className="play__pop-up-text">Choose a different song</p>
-            <p className="play__pop-up-text">Back to main menu</p>
-          </div>
-        </div>
-      )}
+      {chordIndex === selectedSongChords.length && <GameFinish />}
       <div className="play__fretboard-container">
-        <button className="play__btn" onClick={handlePlayBtnClick}>
+        {/* <button className="play__btn" onClick={handlePlayBtnClick}>
           {playing ? "Pause" : "Play"}
-        </button>
+        </button> */}
         <Fretboard
           playing={playing}
           setPlaying={setPlaying}
@@ -130,9 +122,6 @@ export default function PlayPage({
           setCurrentSection={setCurrentSection}
           selectedSong={selectedSong}
         />
-        {/* <div className="play__modal-container">
-          <button className="play__modal" onClick={()=> handleModalBtnClick()}>Show All Chords</button>
-        </div> */}
       </div>
       <div className="play__wrapper">
         <div className="play__lyrics-container">

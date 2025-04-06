@@ -94,6 +94,7 @@ function App() {
               handleSongSelection={handleSongSelection}
               displaySongChords={displaySongChords}
               setCurrentPage={setCurrentPage}
+              setSelectedSong={setSelectedSong}
             />
           }
         />
