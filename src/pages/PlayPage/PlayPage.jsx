@@ -10,6 +10,7 @@ export default function PlayPage({
   selectedSongChords,
   songSections,
   displaySongChords,
+  setCurrentPage,
 }) {
   const [playing, setPlaying] = useState(true);
   const audioRef = useRef(null);
@@ -44,6 +45,8 @@ export default function PlayPage({
   };
 
   useEffect(() => {
+    setCurrentPage("play");
+
     if (audioRef.current) {
       audioRef.current.play().catch((error) => {
         console.error("Autoplay was prevented:", error);

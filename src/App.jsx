@@ -19,6 +19,7 @@ function App() {
   const [selectedSongChords, setSelectedSongChords] = useState(null);
   const [songSections, setSongSections] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
+  const [currentPage, setCurrentPage] = useState(null);
 
   const displaySongChords = (song) => {
     const chords = song.chords;
@@ -78,9 +79,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header currentPage={currentPage} />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={<HomePage setCurrentPage={setCurrentPage} />}
+        />
         <Route
           path="/song-selection"
           element={
@@ -89,6 +93,7 @@ function App() {
               selectedSong={selectedSong}
               handleSongSelection={handleSongSelection}
               displaySongChords={displaySongChords}
+              setCurrentPage={setCurrentPage}
             />
           }
         />
@@ -101,20 +106,25 @@ function App() {
               songSections={songSections}
               displaySongChords={displaySongChords}
               gameStarted={gameStarted}
+              setCurrentPage={setCurrentPage}
             />
           }
         />
         <Route
-          path="/chord-library"
+          path="/library"
           element={
             <LibraryPage
               songs={songs}
               handleSongSelection={handleSongSelection}
               displaySongChords={displaySongChords}
+              setCurrentPage={setCurrentPage}
             />
           }
         />
-        <Route path="/how-to-play" element={<InstructionsPage />} />
+        <Route
+          path="/how-to-play"
+          element={<InstructionsPage setCurrentPage={setCurrentPage} />}
+        />
       </Routes>
     </BrowserRouter>
   );

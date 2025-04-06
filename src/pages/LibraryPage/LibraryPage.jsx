@@ -8,6 +8,7 @@ export default function LibraryPage({
   handleSongSelection,
   songs,
   displaySongChords,
+  setCurrentPage,
 }) {
   const [chordLib, setChordLib] = useState(null);
   const [selectedChord, setSelectedChord] = useState(null);
@@ -27,6 +28,7 @@ export default function LibraryPage({
   };
 
   useEffect(() => {
+    setCurrentPage("library");
     fetchChords();
   }, []);
 

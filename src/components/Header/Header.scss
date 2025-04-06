@@ -28,7 +28,6 @@
   }
 
   &__list-item {
-    color: white;
     margin-right: 1.5rem;
     font-size: 1.3rem;
     cursor: pointer;
@@ -36,10 +35,27 @@
 
   &__list-link {
     text-decoration: none;
-    color: white;
+    color: black;
+
+    &.active {
+      color: rgb(232, 173, 64);
+      text-decoration: underline;
+    }
 
     &:hover {
       text-decoration: underline;
+    }
+
+    &--light {
+      color: white;
+    }
+  }
+
+  &__divider {
+    color: black;
+
+    &--light {
+      color: white;
     }
   }
 }

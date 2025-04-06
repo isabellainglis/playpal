@@ -8,7 +8,10 @@ export default function SongSelectPage({
   selectedSong,
   handleSongSelection,
   displaySongChords,
+  setCurrentPage,
 }) {
+  setCurrentPage("song-selection");
+
   if (!songs) {
     return <p className="loading">Loading...</p>;
   }

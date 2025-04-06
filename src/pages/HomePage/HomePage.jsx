@@ -3,8 +3,9 @@ import "./HomePage.scss";
 import githubIcon from "../../assets/icons/github.png";
 import linkedinIcon from "../../assets/icons/linkedin.webp";
 
-export default function HomePage() {
+export default function HomePage({ setCurrentPage }) {
   const navigate = useNavigate();
+  setCurrentPage("homepage");
 
   return (
     <section className="homepage">
@@ -27,7 +28,7 @@ export default function HomePage() {
           </button>
           <button
             className="homepage__btn"
-            onClick={() => navigate("/chord-library")}
+            onClick={() => navigate("/library")}
           >
             LIBRARY
           </button>

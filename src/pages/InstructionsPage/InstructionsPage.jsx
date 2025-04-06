@@ -1,6 +1,8 @@
 import "./InstructionsPage.scss";
 
-export default function InstructionsPage() {
+export default function InstructionsPage({ setCurrentPage }) {
+  setCurrentPage("instructions");
+
   return (
     <div className="instructions">
       <h1 className="instructions__title">Instructions</h1>
