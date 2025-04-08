@@ -22,7 +22,9 @@ export default function SongSelectPage({
   }, []);
 
   return (
-    <main className="song-select">
+    <main
+      className={`song-select ${selectedSong ? "song-select--selected" : ""}`}
+    >
       <img
         className="song-select__bg"
         src={background}
@@ -30,7 +32,7 @@ export default function SongSelectPage({
       />
       <section
         className={`song-select__select-container ${
-          !selectedSong ? "song-select__select-container--unselected" : ""
+          selectedSong ? "song-select__select-container--selected" : ""
         }`}
       >
         <div className="song-select__content">

@@ -105,7 +105,6 @@ function App() {
               selectedSong={selectedSong}
               selectedSongChords={selectedSongChords}
               songSections={songSections}
-              displaySongChords={displaySongChords}
               gameStarted={gameStarted}
               setCurrentPage={setCurrentPage}
             />

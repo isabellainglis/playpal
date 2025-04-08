@@ -10,9 +10,7 @@ export default function PlayPage({
   selectedSong,
   selectedSongChords,
   songSections,
-  displaySongChords,
   setCurrentPage,
-  setSelectedSong,
 }) {
   const [playing, setPlaying] = useState(true);
   const audioRef = useRef(null);

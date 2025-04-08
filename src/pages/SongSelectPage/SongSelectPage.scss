@@ -4,13 +4,17 @@
 .song-select {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   @include desktop {
     flex-direction: row-reverse;
     justify-content: center;
     max-width: 65rem;
-    margin: 0 auto;
     width: 100%;
+
+    &--selected {
+      margin: 0 auto;
+    }
   }
 
   &__select-container {
@@ -22,19 +26,21 @@
     background-repeat: no-repeat;
     opacity: 90%;
     margin-top: 4rem;
+    margin-bottom: 2rem;
 
     @include tablet-and-above {
-      height: 80vh;
       margin-top: 1rem;
-      margin-bottom: 2rem;
     }
 
     @include desktop {
       height: 80vh;
+
+      margin: 0 auto;
       margin: 2rem 0 1rem 8rem;
 
-      &--unselected {
-        margin: 0 auto;
+      &--selected {
+        height: 80vh;
+        margin: 2rem 5rem 0 8rem;
       }
     }
   }
@@ -43,9 +49,11 @@
     margin-top: 10rem;
     height: 40vh;
     padding: 0 2rem;
+    width: 90%;
 
     @include tablet-and-above {
       height: 53vh;
+      width: auto;
     }
   }
 
@@ -58,6 +66,11 @@
     text-align: center;
     border-radius: 5px;
     margin: 0 auto;
+    padding-right: 3rem;
+
+    @include tablet-and-above {
+      padding-right: 0;
+    }
   }
 
   &__songs-wrapper {

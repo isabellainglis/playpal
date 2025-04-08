@@ -5,13 +5,24 @@
   margin: 0.5rem;
   margin-top: 0;
   padding: 0.3rem;
-  color: black;
+  color: #000000;
+  margin-left: 0;
+
+  @include tablet-and-above {
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+  }
 
   &__container {
     display: flex;
     border-radius: 5px;
-    padding: 0.5rem 0.2rem 0.5rem 0.5rem;
+    padding: 0.5rem 0.2rem 0.5rem 0;
     cursor: pointer;
+    width: 90%;
+
+    @include tablet-and-above {
+      width: auto;
+    }
 
     &:hover {
       background-color: rgba(204, 201, 201, 0.485);
@@ -32,14 +43,27 @@
 
   &__info {
     margin: 0;
+    font-size: 0.8rem;
+    @include tablet-and-above {
+      font-size: 1.3rem;
+    }
 
     &--name {
       height: 1.5rem;
+      font-size: 1rem;
+
+      @include tablet-and-above {
+        font-size: 1.3rem;
+      }
     }
 
     &--artist {
       color: rgb(222, 145, 3);
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+
+      @include tablet-and-above {
+        font-size: 1.2rem;
+      }
     }
   }
 }
