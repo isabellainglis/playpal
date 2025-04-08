@@ -5,6 +5,11 @@
   @include page-content-container;
   text-align: center;
   color: white;
+  height: 85vh;
+
+  @include tablet-and-above {
+    height: 65vh;
+  }
 
   &__poster-dots-wrapper {
     @include poster-dots-wrapper;

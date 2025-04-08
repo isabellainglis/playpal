@@ -39,4 +39,5 @@ I created a separate server repo to handle my API calls to the database. This in
 # Future Features
 
 - I would love to add more songs to the app
+- Songs that include picking rather than strumming
 - Chord recognition, to incorporate scoring and a leaderboard

@@ -29,7 +29,11 @@ export default function SongLibCard({
       <div className="song-card__genre">{song.genre}</div>
       <div className="song-card__tuning">{song.tuning} tuning</div>
       <div className="song-card__capo">
-        {song.capo === 0 ? "No capo" : `Capo: ${song.capo}th fret`}
+        {song.capo === 0 && "No capo"}
+        {song.capo === 1 && `Capo: ${song.capo}st fret`}
+        {song.capo === 2 && `Capo: ${song.capo}nd fret`}
+        {song.capo === 3 && `Capo: ${song.capo}rd fret`}
+        {song.capo >= 4 && `Capo: ${song.capo}th fret`}
       </div>
       <div className="song-card__chords">{displaySongChords(song)}</div>
       <Link to="/play">

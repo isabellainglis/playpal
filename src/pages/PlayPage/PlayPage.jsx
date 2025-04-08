@@ -70,9 +70,11 @@ export default function PlayPage({
     return (
       <div className="play__start-option">
         <p className="play__start-info">
-          {selectedSong.capo === 0
-            ? "Capo: Not required"
-            : `Capo: ${selectedSong.capo}`}
+          {selectedSong.capo === 0 && "No capo"}
+          {selectedSong.capo === 1 && `Capo: ${selectedSong.capo}st fret`}
+          {selectedSong.capo === 2 && `Capo: ${selectedSong.capo}nd fret`}
+          {selectedSong.capo === 3 && `Capo: ${selectedSong.capo}rd fret`}
+          {selectedSong.capo >= 4 && `Capo: ${selectedSong.capo}th fret`}
         </p>
         <p className="play__start-info">Tuning: {selectedSong.tuning}</p>
         <p className="play__start-info">
