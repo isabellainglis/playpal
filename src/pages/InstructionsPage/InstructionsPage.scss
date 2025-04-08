@@ -8,7 +8,8 @@
   height: 85vh;
 
   @include tablet-and-above {
-    height: 65vh;
+    height: 67vh;
+    font-size: 1.1rem;
   }
 
   &__poster-dots-wrapper {

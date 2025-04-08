@@ -1,11 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-// body {
-//   background: url("../../assets/images/backstage.jpg");
-//   background-size: cover;
-// }
-
 .song-select {
   display: flex;
   flex-direction: column;
@@ -36,12 +31,10 @@
 
     @include desktop {
       height: 80vh;
-      width: 50%;
       margin: 2rem 0 1rem 8rem;
 
       &--unselected {
         margin: 0 auto;
-        width: 100%;
       }
     }
   }
@@ -49,11 +42,9 @@
   &__content {
     margin-top: 10rem;
     height: 40vh;
-    width: 23rem;
     padding: 0 2rem;
 
     @include tablet-and-above {
-      width: 26rem;
       height: 53vh;
     }
   }
@@ -87,10 +78,5 @@
     top: 0;
     left: 0;
     z-index: -1;
-
-    // @include desktop {
-    //   left: 50%;
-    //   margin-left: -512px; /* 50% */
-    // }
   }
 }
