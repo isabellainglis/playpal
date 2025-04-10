@@ -5,6 +5,7 @@ import LyricsDisplay from "../../components/LyricsDisplay/LyricsDisplay";
 import StrumPattern from "../../components/StrumPattern/StrumPattern";
 import background from "../../assets/images/stage.jpg";
 import GameFinish from "../../components/GameFinish/GameFinish";
+import { useNavigate } from "react-router-dom";
 
 export default function PlayPage({
   selectedSong,
@@ -19,10 +20,7 @@ export default function PlayPage({
   const [sectionId, setSectionId] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
   const [audioStarted, setAudioStarted] = useState(false);
-
-  if (!selectedSongChords) {
-    return <p className="loading">Loading...</p>;
-  }
+  const navigate = useNavigate();
 
   const setCurrentSection = (sectionId) => {
     for (let i = 0; i < selectedSongChords.length; i++) {
@@ -51,6 +49,10 @@ export default function PlayPage({
   };
 
   useEffect(() => {
+    if (!selectedSong) {
+      navigate("/song-selection");
+    }
+
     setCurrentPage("play");
 
     if (audioRef.current) {
@@ -63,6 +65,10 @@ export default function PlayPage({
   const handleStartBtn = () => {
     setGameStarted(true);
   };
+
+  if (!selectedSongChords) {
+    return <p className="loading">Loading...</p>;
+  }
 
   if (!gameStarted) {
     return (

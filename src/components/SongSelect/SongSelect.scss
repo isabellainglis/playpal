@@ -13,19 +13,20 @@
     margin-right: 1rem;
   }
 
+  &:hover {
+    background-color: rgba(204, 201, 201, 0.485);
+    border-radius: 5px;
+  }
+
   &__container {
     display: flex;
     border-radius: 5px;
-    padding: 0.5rem 0.2rem 0.5rem 0;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     cursor: pointer;
     width: 90%;
 
     @include tablet-and-above {
       width: auto;
-    }
-
-    &:hover {
-      background-color: rgba(204, 201, 201, 0.485);
     }
   }
 
