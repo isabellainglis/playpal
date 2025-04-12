@@ -5,6 +5,7 @@ const fetchAllSongs = async () => {
     const { data } = await axios.get(
       `${import.meta.env.VITE_BACKEND_URL}/songs`
     );
+    console.log("Data received:", data);
 
     return data;
   } catch (error) {
