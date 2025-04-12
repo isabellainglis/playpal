@@ -53,9 +53,13 @@ export default function Fretboard({
 
   const moveCircles = () => {
     let animationFrameId;
+    let lastFrameTime = performance.now();
 
-    const animate = () => {
+    const animate = (currentTime) => {
       if (playing) {
+        const deltaTime = currentTime - lastFrameTime;
+        lastFrameTime = currentTime;
+
         const currentChord = selectedSongChords[chordIndex];
         const chordDuration = currentChord ? currentChord.duration : 1;
         const speedFactor = 550 / (chordDuration * 1000);
@@ -64,7 +68,7 @@ export default function Fretboard({
           prevCircles
             .map((circle) => ({
               ...circle,
-              position: circle.position + speedFactor * 16,
+              position: circle.position + speedFactor * deltaTime,
             }))
             .filter((circle) => circle.position < 550)
         );
@@ -73,7 +77,7 @@ export default function Fretboard({
       }
     };
 
-    animate();
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(animationFrameId);
   };
