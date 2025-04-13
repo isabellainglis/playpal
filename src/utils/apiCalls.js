@@ -1,10 +1,9 @@
 import axios from "axios";
+const API = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
 
 const fetchAllSongs = async () => {
   try {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL}/songs`
-    );
+    const { data } = await axios.get(`${API}/songs`);
     console.log("Data received:", data);
 
     return data;
@@ -15,9 +14,7 @@ const fetchAllSongs = async () => {
 
 const fetchAllChords = async () => {
   try {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL}/chords`
-    );
+    const { data } = await axios.get(`${API}/chords`);
 
     return data;
   } catch (error) {
@@ -27,9 +24,7 @@ const fetchAllChords = async () => {
 
 const fetchSingleSongDetails = async (songId) => {
   try {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL}/songs/${songId}/details`
-    );
+    const { data } = await axios.get(`${API}/songs/${songId}/details`);
 
     return data;
   } catch (error) {
@@ -39,9 +34,7 @@ const fetchSingleSongDetails = async (songId) => {
 
 const fetchSingleSongChords = async (songId) => {
   try {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL}/songs/${songId}/chords`
-    );
+    const { data } = await axios.get(`${API}/songs/${songId}/chords`);
 
     return data;
   } catch (error) {
@@ -51,9 +44,7 @@ const fetchSingleSongChords = async (songId) => {
 
 const fetchSingleSongLyrics = async (songId) => {
   try {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL}/songs/${songId}/sections`
-    );
+    const { data } = await axios.get(`${API}/songs/${songId}/sections`);
 
     return data;
   } catch (error) {
