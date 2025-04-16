@@ -4,7 +4,7 @@
 
 PlayPal is a fun browser app where you can play along to songs on the guitar, with the chords and lyrics appearing on the screen in sync with the music.
 
-I built this app to help make it easier to be more consistent with playing guitar. I have personally found that consistency is key when introducing a new habit and that it can often be a hassle to find all the information I need when re-visting a previous song that I have learned. With Playpal, all of this information is in one place (chords, strumming pattern, lyrics and section patterns), making it easy to pick up where you left off!
+I built this app to help make it easier to be more consistent with playing guitar. I have personally found that consistency is key when introducing a new habit and that it can often be a hassle to find all the information I need when re-visiting a previous song that I have learned. With Playpal, all of this information is in one place (chords, strumming pattern, lyrics and section patterns), making it easy to pick up where you left off!
 
 ### **Deployed:** https://playpal-guitar.netlify.app/
 
@@ -24,7 +24,7 @@ I built this app to help make it easier to be more consistent with playing guita
 
 #### Library
 
-- Browse the chords library, which includes diagrams to help with learning new chords. You can click on a chord to filter by songs that contain specific chords.
+- Browse the chords library, which includes diagrams to help with learning new chords. You can click on a chord to filter by songs that contain that specific chord.
 
 ## Installation and Setup
 
@@ -43,8 +43,8 @@ I built this app to help make it easier to be more consistent with playing guita
 ## Project Design
 
 - I designed the app in a game-style so that it would be fun and interactive (similar to Guitar Hero).
-- All data within the app comes from a self-build mySQL db. I created and populated the chords, lyrics and song details data using mySQL seeds, which can be found in my separate [server repo](https://github.com/isabellainglis/playpal-server).
-- The library was an additional unplanned feature that I added to bring an educational aspect to the app.
+- All data within the app comes from a self-built mySQL db. I created and populated the chords, lyrics and song details data using mySQL seeds, which can be found in my separate [server repo](https://github.com/isabellainglis/playpal-server).
+- The library was an additional feature that I added to bring an educational aspect to the app.
 
 ## Challenges
 
@@ -54,7 +54,7 @@ I encountered a new hurdle when using the request animation frames - as this use
 
 ## Tech Stack
 
-**Client:** React, Sass, Javascript
+**Client:** React JS, Sass
 
 **Server:** Node, Express, MySQL
 
@@ -73,5 +73,5 @@ I encountered a new hurdle when using the request animation frames - as this use
 
 - I would love to add more songs to the app
 - Incorporating songs that include picking rather than just strumming
-- Chord recognition, to provide more a game element with scoring and a leaderboard
-- More filtering options in Library page, i.e. being able to filter by mutliple chords.
+- Chord recognition, to provide more of a game element with scoring and a leaderboard
+- More filtering options in the Library page, i.e. being able to filter by mutliple chords.
