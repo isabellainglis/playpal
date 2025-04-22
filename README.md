@@ -46,6 +46,10 @@ I built this app to help make it easier to be more consistent with playing guita
 - All data within the app comes from a self-built mySQL db. I created and populated the chords, lyrics and song details data using mySQL seeds, which can be found in my separate [server repo](https://github.com/isabellainglis/playpal-server).
 - The library was an additional feature that I added to bring an educational aspect to the app.
 
+**Original designs:**
+
+![Excalidraw designs](./src/assets/images/excalidraw-designs.png)
+
 ## Challenges
 
 Getting the timings right for the chords and lyrics on the screen was the biggest challenge I faced in this project. Originally I had used setintervals to change the positioning of the chords as they moved along the fretboard, however I eventually refactored this to instead use animation frames. This made the timings more dynamic and easier to adapt for different parts of the song.
