@@ -59,5 +59,3 @@ export default function HomePage({ setCurrentPage }) {
     </section>
   );
 }
-
-// button animation - change shape and go skewed/change colour on hover
